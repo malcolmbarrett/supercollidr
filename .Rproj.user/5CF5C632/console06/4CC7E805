@@ -495,3 +495,176 @@ git add .
  rewrite public/publication_types/2/page/1/index.html (100%)
  rewrite public/tags/eye_vision/page/1/index.html (100%)
 ]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git commit -m "update url"add .[Kpush -u origin masteradd .[Kpush -u origin master[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kadd .
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git comim[K[Kmit - "??"
+error: pathspec '-' did not match any file(s) known to git.
+error: pathspec '??' did not match any file(s) known to git.
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git commit - "??"m "??"
+[master df0e941] ??
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git commit -m "??"[1P "??"[8Padd .commit -m "update url"add .[Kpush -u origin masterconfig --global credential.helper osxkeychain[24Ppush -u origin master
+Counting objects: 6, done.
+Delta compression using up to 8 threads.
+Compressing objects:  16% (1/6)   Compressing objects:  33% (2/6)   Compressing objects:  50% (3/6)   Compressing objects:  66% (4/6)   Compressing objects:  83% (5/6)   Compressing objects: 100% (6/6)   Compressing objects: 100% (6/6), done.
+Writing objects:  16% (1/6)   Writing objects:  33% (2/6)   Writing objects:  50% (3/6)   Writing objects:  66% (4/6)   Writing objects:  83% (5/6)   Writing objects: 100% (6/6)   Writing objects: 100% (6/6), 586 bytes | 0 bytes/s, done.
+Total 6 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/3)   [Kremote: Resolving deltas:  33% (1/3)   [Kremote: Resolving deltas:  66% (2/3)   [Kremote: Resolving deltas: 100% (3/3)   [Kremote: Resolving deltas: 100% (3/3), completed with 3 local objects.[K
+To https://github.com/malcolmbarrett/supercollidr.git
+   ca3de9b..df0e941  master -> master
+Branch master set up to track remote branch master from origin.
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git rm -r --cached public/
+rm 'public/2014/03/10/migrate-from-jekyll-to-hugo/index.html'
+rm 'public/2016/04/10/frequently-asked-questions-faq/index.html'
+rm 'public/2016/04/17/writing-content-with-markdown-latex-and-shortcodes/index.html'
+rm 'public/2016/04/18/managing-content/index.html'
+rm 'public/2016/04/19/customizing-the-homepage-with-widgets/index.html'
+rm 'public/2016/04/20/getting-started-with-the-academic-framework-for-hugo/index.html'
+rm 'public/404.html'
+rm 'public/files/citations/clothing-search.bib'
+rm 'public/home/index.xml'
+rm 'public/img/P8080858 (1).JPG'
+rm 'public/img/P8080858.JPG'
+rm 'public/img/P8080907.JPG'
+rm 'public/img/boards.jpg'
+rm 'public/img/bubbles.jpg'
+rm 'public/img/forest-wide.png'
+rm 'public/img/forest.png'
+rm 'public/img/fu_proj-wide.png'
+rm 'public/img/fu_proj.png'
+rm 'public/img/glasses-1934296_1920-wide.jpg'
+rm 'public/img/glasses-1934296_1920.jpg'
+rm 'public/img/headers/P8080907.JPG'
+rm 'public/img/headers/bubbles-wide.jpg'
+rm 'public/img/headers/getting-started.png'
+rm 'public/img/icon-192.png'
+rm 'public/img/icon.png'
+rm 'public/img/logo.png'
+rm 'public/img/methods_proj-wide.png'
+rm 'public/img/methods_proj.png'
+rm 'public/img/portrait.jpg'
+rm 'public/img/rpackage_proj-wide.png'
+rm 'public/img/rpackage_proj.png'
+rm 'public/img/untitled (1).png'
+rm 'public/img/untitled (2).png'
+rm 'public/index.html'
+rm 'public/index.xml'
+rm 'public/js/hugo-academic.js'
+rm 'public/post/faq/index.html'
+rm 'public/post/getting-started/index.html'
+rm 'public/post/index.html'
+rm 'public/post/index.xml'
+rm 'public/post/managing-content/index.html'
+rm 'public/post/migrate-from-jekyll/index.html'
+rm 'public/post/page/1/index.html'
+rm 'public/post/widgets/index.html'
+rm 'public/post/writing-markdown-latex/index.html'
+rm 'public/project/cancer/index.html'
+rm 'public/project/deep-learning/index.html'
+rm 'public/project/example-external-project/index.html'
+rm 'public/project/index.xml'
+rm 'public/project/methods/index.html'
+rm 'public/project/predicting_fu/index.html'
+rm 'public/project/rpackages/index.html'
+rm 'public/project/vision_qol/index.html'
+rm 'public/publication/cam_cancer_pain/index.html'
+rm 'public/publication/cf_caregivers/index.html'
+rm 'public/publication/clothing-search/index.html'
+rm 'public/publication/index.html'
+rm 'public/publication/index.xml'
+rm 'public/publication/iud_metaanalysis/index.html'
+rm 'public/publication/my-paper-name/index.html'
+rm 'public/publication/person-re-identification/index.html'
+rm 'public/publication/qol_cancer_pain/index.html'
+rm 'public/publication/race_qol_pain/index.html'
+rm 'public/publication/symtom_distress/index.html'
+rm 'public/publication_types/0/index.html'
+rm 'public/publication_types/0/page/1/index.html'
+rm 'public/publication_types/1/index.html'
+rm 'public/publication_types/1/page/1/index.html'
+rm 'public/publication_types/2/index.html'
+rm 'public/publication_types/2/page/1/index.html'
+rm 'public/site.webmanifest'
+rm 'public/sitemap.xml'
+rm 'public/styles.css'
+rm 'public/tags/academic/index.html'
+rm 'public/tags/academic/page/1/index.html'
+rm 'public/tags/cancer/index.html'
+rm 'public/tags/cancer/page/1/index.html'
+rm 'public/tags/coding/index.html'
+rm 'public/tags/coding/page/1/index.html'
+rm 'public/tags/deep-learning/index.html'
+rm 'public/tags/deep-learning/page/1/index.html'
+rm 'public/tags/demo/index.html'
+rm 'public/tags/demo/page/1/index.html'
+rm 'public/tags/eye_vision/index.html'
+rm 'public/tags/eye_vision/page/1/index.html'
+rm 'public/tags/hugo/index.html'
+rm 'public/tags/hugo/page/1/index.html'
+rm 'public/tags/jekyll/index.html'
+rm 'public/tags/jekyll/page/1/index.html'
+rm 'public/tags/methods/index.html'
+rm 'public/tags/methods/page/1/index.html'
+rm 'public/tags/r/index.html'
+rm 'public/tags/r/page/1/index.html'
+rm 'public/talk/cam_pain_poster/index.html'
+rm 'public/talk/example-talk/index.html'
+rm 'public/talk/ifh_ndpp_poster/index.html'
+rm 'public/talk/index.html'
+rm 'public/talk/index.xml'
+rm 'public/talk/iud_cc_poster/index.html'
+rm 'public/talk/metanalysis_viz_talk/index.html'
+rm 'public/talk/mytalk/index.html'
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git rm -r --cached public/[1Ppush -u origin masterrm -r --cached public/[K[K[K[K[K[K[K.Rproj.user/
+error: the following file has staged content different from both the
+file and the HEAD:
+    .Rproj.user/5CF5C632/console06/4CC7E805
+(use -f to force removal)
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git rm -r --cached .Rproj.user/ -f
+rm '.Rproj.user/5CF5C632/console06/4CC7E805'
+rm '.Rproj.user/5CF5C632/console06/4CC7E805.env'
+rm '.Rproj.user/5CF5C632/console06/INDEX001'
+rm '.Rproj.user/5CF5C632/pcs/files-pane.pper'
+rm '.Rproj.user/5CF5C632/pcs/source-pane.pper'
+rm '.Rproj.user/5CF5C632/pcs/windowlayoutstate.pper'
+rm '.Rproj.user/5CF5C632/pcs/workbench-pane.pper'
+rm '.Rproj.user/5CF5C632/rmd-outputs'
+rm '.Rproj.user/5CF5C632/saved_source_markers'
+rm '.Rproj.user/5CF5C632/sources/prop/1F2050CE'
+rm '.Rproj.user/5CF5C632/sources/prop/21030BFA'
+rm '.Rproj.user/5CF5C632/sources/prop/25456EE3'
+rm '.Rproj.user/5CF5C632/sources/prop/298F2917'
+rm '.Rproj.user/5CF5C632/sources/prop/29C63B'
+rm '.Rproj.user/5CF5C632/sources/prop/2B6A393B'
+rm '.Rproj.user/5CF5C632/sources/prop/2E5972AF'
+rm '.Rproj.user/5CF5C632/sources/prop/3ECA177D'
+rm '.Rproj.user/5CF5C632/sources/prop/413F0AF4'
+rm '.Rproj.user/5CF5C632/sources/prop/4F6404CA'
+rm '.Rproj.user/5CF5C632/sources/prop/53215A8D'
+rm '.Rproj.user/5CF5C632/sources/prop/558E6D39'
+rm '.Rproj.user/5CF5C632/sources/prop/5E85436B'
+rm '.Rproj.user/5CF5C632/sources/prop/6F71585D'
+rm '.Rproj.user/5CF5C632/sources/prop/8076E7F4'
+rm '.Rproj.user/5CF5C632/sources/prop/83FC5001'
+rm '.Rproj.user/5CF5C632/sources/prop/85F652B9'
+rm '.Rproj.user/5CF5C632/sources/prop/87BF91B0'
+rm '.Rproj.user/5CF5C632/sources/prop/975512B5'
+rm '.Rproj.user/5CF5C632/sources/prop/9B29848D'
+rm '.Rproj.user/5CF5C632/sources/prop/9DB564B3'
+rm '.Rproj.user/5CF5C632/sources/prop/A0A88ADD'
+rm '.Rproj.user/5CF5C632/sources/prop/A596889E'
+rm '.Rproj.user/5CF5C632/sources/prop/A66F83FA'
+rm '.Rproj.user/5CF5C632/sources/prop/B7EBC52C'
+rm '.Rproj.user/5CF5C632/sources/prop/BDA3D310'
+rm '.Rproj.user/5CF5C632/sources/prop/C5AD50C9'
+rm '.Rproj.user/5CF5C632/sources/prop/C73CCB36'
+rm '.Rproj.user/5CF5C632/sources/prop/C9DD5676'
+rm '.Rproj.user/5CF5C632/sources/prop/D97F1C86'
+rm '.Rproj.user/5CF5C632/sources/prop/E1B9B1DB'
+rm '.Rproj.user/5CF5C632/sources/prop/E3B5584B'
+rm '.Rproj.user/5CF5C632/sources/prop/E5844948'
+rm '.Rproj.user/5CF5C632/sources/prop/EEBCB2CE'
+rm '.Rproj.user/5CF5C632/sources/prop/F37F8161'
+rm '.Rproj.user/5CF5C632/sources/prop/FC11055C'
+rm '.Rproj.user/5CF5C632/sources/prop/INDEX'
+rm '.Rproj.user/shared/notebooks/patch-chunk-names'
+rm '.Rproj.user/shared/notebooks/paths'
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ 
