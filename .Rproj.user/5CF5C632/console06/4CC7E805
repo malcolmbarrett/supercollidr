@@ -466,3 +466,32 @@ Changes not staged for commit:
 
 no changes added to commit
 git add .
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git commit - [Km "update"r"u"[1P"[1P" "u"r"l"
+[master b806c4d] update url
+ 72 files changed, 1231 insertions(+), 1647 deletions(-)
+ rewrite .Rproj.user/5CF5C632/console06/INDEX001 (86%)
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/1CC7EE9F
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/1CC7EE9F-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/231C6488
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/231C6488-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/2ED6CCE6
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/2ED6CCE6-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/35B07252
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/35B07252-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/6ABCBD84
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/6ABCBD84-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/7C3164F9
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/7C3164F9-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/B6C6EC59
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/B6C6EC59-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/BA18B85B
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/BA18B85B-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/DE11DCE1
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/DE11DCE1-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/E2268983
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/E2268983-contents
+ delete mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/lock_file
+ create mode 100644 .gitignore
+ rewrite public/publication_types/2/page/1/index.html (100%)
+ rewrite public/tags/eye_vision/page/1/index.html (100%)
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ 
