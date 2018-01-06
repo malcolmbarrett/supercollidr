@@ -494,4 +494,4 @@ git add .
  create mode 100644 .gitignore
  rewrite public/publication_types/2/page/1/index.html (100%)
  rewrite public/tags/eye_vision/page/1/index.html (100%)
-]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ 
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git commit -m "update url"add .[Kpush -u origin masteradd .[Kpush -u origin master[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kadd .
