@@ -33,3 +33,436 @@ hugo nre [K[K[Kew project/eye_vision.md
 [KMacBook-Pro:supercollider malcolmbarrett$ git push -u origin masterconfig --global credential.helper osxkeychain[23Predential-osxkeychain[1Ppush -u origin masterremote add origin https://github.com/malcolmbarrett/confoundr.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush -u origin master[Kremote add origin https://github.com/malcolmbarrett/confoundr.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[40Phugo new project/rpackages.md[2Pmethods.md[1Pcancer.mdmethods.mdrpackages.mdgit remote add origin https://github.com/malcolmbarrett/confoundr.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush -u origin master[Kremote add origin https://github.com/malcolmbarrett/confoundr.git[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpush -u origin master[Kcredential-osxkeychainonfig --global credential.helper osxkeychain[24Ppush -u origin master[Kgit init .
 Initialized empty Git repository in /Users/malcolmbarrett/Google Drive/Active/website/supercollider/.git/
 ]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git add .
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git commit -m "initial commit"
+[master (root-commit) b91cd64] initial commit
+ 364 files changed, 38797 insertions(+)
+ create mode 100644 .RData
+ create mode 100644 .Rhistory
+ create mode 100644 .Rproj.user/5CF5C632/console06/4CC7E805
+ create mode 100644 .Rproj.user/5CF5C632/console06/4CC7E805.env
+ create mode 100644 .Rproj.user/5CF5C632/console06/INDEX001
+ create mode 100644 .Rproj.user/5CF5C632/pcs/files-pane.pper
+ create mode 100644 .Rproj.user/5CF5C632/pcs/source-pane.pper
+ create mode 100644 .Rproj.user/5CF5C632/pcs/windowlayoutstate.pper
+ create mode 100644 .Rproj.user/5CF5C632/pcs/workbench-pane.pper
+ create mode 100644 .Rproj.user/5CF5C632/rmd-outputs
+ create mode 100644 .Rproj.user/5CF5C632/saved_source_markers
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/1F2050CE
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/21030BFA
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/25456EE3
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/298F2917
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/29C63B
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/2B6A393B
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/2E5972AF
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/3ECA177D
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/413F0AF4
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/4F6404CA
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/53215A8D
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/558E6D39
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/5E85436B
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/6F71585D
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/8076E7F4
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/83FC5001
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/85F652B9
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/87BF91B0
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/975512B5
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/9B29848D
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/9DB564B3
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/A0A88ADD
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/A596889E
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/A66F83FA
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/B7EBC52C
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/BDA3D310
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/C5AD50C9
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/C73CCB36
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/C9DD5676
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/D97F1C86
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/E1B9B1DB
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/E3B5584B
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/E5844948
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/EEBCB2CE
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/F37F8161
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/FC11055C
+ create mode 100644 .Rproj.user/5CF5C632/sources/prop/INDEX
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/1CC7EE9F
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/1CC7EE9F-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/231C6488
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/231C6488-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/2ED6CCE6
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/2ED6CCE6-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/35B07252
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/35B07252-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/6ABCBD84
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/6ABCBD84-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/7C3164F9
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/7C3164F9-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/B6C6EC59
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/B6C6EC59-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/BA18B85B
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/BA18B85B-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/DE11DCE1
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/DE11DCE1-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/E2268983
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/E2268983-contents
+ create mode 100644 .Rproj.user/5CF5C632/sources/s-853790BC/lock_file
+ create mode 100644 .Rproj.user/shared/notebooks/patch-chunk-names
+ create mode 100644 .Rproj.user/shared/notebooks/paths
+ create mode 100644 config.toml
+ create mode 100644 content/home/about.md
+ create mode 100644 content/home/consulting.md
+ create mode 100644 content/home/contact.md
+ create mode 100644 content/home/hero.md
+ create mode 100644 content/home/posts.md
+ create mode 100644 content/home/projects.md
+ create mode 100644 content/home/publications.md
+ create mode 100644 content/home/publications_selected.md
+ create mode 100644 content/home/tags.md
+ create mode 100644 content/home/talks.md
+ create mode 100644 content/post/_index.md
+ create mode 100644 content/project/cancer.md
+ create mode 100644 content/project/methods.md
+ create mode 100644 content/project/predicting_fu.md
+ create mode 100644 content/project/rpackages.md
+ create mode 100644 content/project/vision_qol.md
+ create mode 100644 content/publication/_index.md
+ create mode 100644 content/publication/cam_cancer_pain.md
+ create mode 100644 content/publication/cf_caregivers.md
+ create mode 100644 content/publication/iud_metaanalysis.md
+ create mode 100644 content/publication/qol_cancer_pain.md
+ create mode 100644 content/publication/race_qol_pain.md
+ create mode 100644 content/publication/symtom_distress.md
+ create mode 100644 content/tags/academic/_index.md
+ create mode 100644 content/talk/_index.md
+ create mode 100644 content/talk/cam_pain_poster.html
+ create mode 100644 content/talk/cam_pain_poster.md
+ create mode 100644 content/talk/ifh_ndpp_poster.md
+ create mode 100644 content/talk/iud_cc_poster.md
+ create mode 100644 content/talk/metanalysis_viz_talk.md
+ create mode 100644 index.Rmd
+ create mode 100644 public/2014/03/10/migrate-from-jekyll-to-hugo/index.html
+ create mode 100644 public/2016/04/10/frequently-asked-questions-faq/index.html
+ create mode 100644 public/2016/04/17/writing-content-with-markdown-latex-and-shortcodes/index.html
+ create mode 100644 public/2016/04/18/managing-content/index.html
+ create mode 100644 public/2016/04/19/customizing-the-homepage-with-widgets/index.html
+ create mode 100644 public/2016/04/20/getting-started-with-the-academic-framework-for-hugo/index.html
+ create mode 100644 public/404.html
+ create mode 100644 public/files/citations/clothing-search.bib
+ create mode 100644 public/home/index.xml
+ create mode 100644 public/img/P8080858 (1).JPG
+ create mode 100644 public/img/P8080858.JPG
+ create mode 100644 public/img/P8080907.JPG
+ create mode 100644 public/img/boards.jpg
+ create mode 100644 public/img/bubbles.jpg
+ create mode 100644 public/img/forest-wide.png
+ create mode 100644 public/img/forest.png
+ create mode 100644 public/img/fu_proj-wide.png
+ create mode 100644 public/img/fu_proj.png
+ create mode 100644 public/img/glasses-1934296_1920-wide.jpg
+ create mode 100644 public/img/glasses-1934296_1920.jpg
+ create mode 100644 public/img/headers/P8080907.JPG
+ create mode 100644 public/img/headers/bubbles-wide.jpg
+ create mode 100644 public/img/headers/getting-started.png
+ create mode 100644 public/img/icon-192.png
+ create mode 100644 public/img/icon.png
+ create mode 100644 public/img/logo.png
+ create mode 100644 public/img/methods_proj-wide.png
+ create mode 100644 public/img/methods_proj.png
+ create mode 100644 public/img/portrait.jpg
+ create mode 100644 public/img/rpackage_proj-wide.png
+ create mode 100644 public/img/rpackage_proj.png
+ create mode 100644 public/img/untitled (1).png
+ create mode 100644 public/img/untitled (2).png
+ create mode 100644 public/index.html
+ create mode 100644 public/index.xml
+ create mode 100644 public/js/hugo-academic.js
+ create mode 100644 public/post/faq/index.html
+ create mode 100644 public/post/getting-started/index.html
+ create mode 100644 public/post/index.html
+ create mode 100644 public/post/index.xml
+ create mode 100644 public/post/managing-content/index.html
+ create mode 100644 public/post/migrate-from-jekyll/index.html
+ create mode 100644 public/post/page/1/index.html
+ create mode 100644 public/post/widgets/index.html
+ create mode 100644 public/post/writing-markdown-latex/index.html
+ create mode 100644 public/project/cancer/index.html
+ create mode 100644 public/project/deep-learning/index.html
+ create mode 100644 public/project/example-external-project/index.html
+ create mode 100644 public/project/index.xml
+ create mode 100644 public/project/methods/index.html
+ create mode 100644 public/project/predicting_fu/index.html
+ create mode 100644 public/project/rpackages/index.html
+ create mode 100644 public/project/vision_qol/index.html
+ create mode 100644 public/publication/cam_cancer_pain/index.html
+ create mode 100644 public/publication/cf_caregivers/index.html
+ create mode 100644 public/publication/clothing-search/index.html
+ create mode 100644 public/publication/index.html
+ create mode 100644 public/publication/index.xml
+ create mode 100644 public/publication/iud_metaanalysis/index.html
+ create mode 100644 public/publication/my-paper-name/index.html
+ create mode 100644 public/publication/person-re-identification/index.html
+ create mode 100644 public/publication/qol_cancer_pain/index.html
+ create mode 100644 public/publication/race_qol_pain/index.html
+ create mode 100644 public/publication/symtom_distress/index.html
+ create mode 100644 public/publication_types/0/index.html
+ create mode 100644 public/publication_types/0/page/1/index.html
+ create mode 100644 public/publication_types/1/index.html
+ create mode 100644 public/publication_types/1/page/1/index.html
+ create mode 100644 public/publication_types/2/index.html
+ create mode 100644 public/publication_types/2/page/1/index.html
+ create mode 100644 public/site.webmanifest
+ create mode 100644 public/sitemap.xml
+ create mode 100644 public/styles.css
+ create mode 100644 public/tags/academic/index.html
+ create mode 100644 public/tags/academic/page/1/index.html
+ create mode 100644 public/tags/cancer/index.html
+ create mode 100644 public/tags/cancer/page/1/index.html
+ create mode 100644 public/tags/coding/index.html
+ create mode 100644 public/tags/coding/page/1/index.html
+ create mode 100644 public/tags/deep-learning/index.html
+ create mode 100644 public/tags/deep-learning/page/1/index.html
+ create mode 100644 public/tags/demo/index.html
+ create mode 100644 public/tags/demo/page/1/index.html
+ create mode 100644 public/tags/eye_vision/index.html
+ create mode 100644 public/tags/eye_vision/page/1/index.html
+ create mode 100644 public/tags/hugo/index.html
+ create mode 100644 public/tags/hugo/page/1/index.html
+ create mode 100644 public/tags/jekyll/index.html
+ create mode 100644 public/tags/jekyll/page/1/index.html
+ create mode 100644 public/tags/methods/index.html
+ create mode 100644 public/tags/methods/page/1/index.html
+ create mode 100644 public/tags/r/index.html
+ create mode 100644 public/tags/r/page/1/index.html
+ create mode 100644 public/talk/cam_pain_poster/index.html
+ create mode 100644 public/talk/example-talk/index.html
+ create mode 100644 public/talk/ifh_ndpp_poster/index.html
+ create mode 100644 public/talk/index.html
+ create mode 100644 public/talk/index.xml
+ create mode 100644 public/talk/iud_cc_poster/index.html
+ create mode 100644 public/talk/metanalysis_viz_talk/index.html
+ create mode 100644 public/talk/mytalk/index.html
+ create mode 100644 static/files/citations/clothing-search.bib
+ create mode 100644 static/img/boards.jpg
+ create mode 100644 static/img/bubbles.jpg
+ create mode 100644 static/img/forest-wide.png
+ create mode 100644 static/img/forest.png
+ create mode 100644 static/img/fu_proj-wide.png
+ create mode 100644 static/img/fu_proj.png
+ create mode 100644 static/img/glasses-1934296_1920-wide.jpg
+ create mode 100644 static/img/glasses-1934296_1920.jpg
+ create mode 100644 static/img/headers/P8080907.JPG
+ create mode 100644 static/img/headers/bubbles-wide.jpg
+ create mode 100644 static/img/headers/getting-started.png
+ create mode 100644 static/img/icon-192.png
+ create mode 100644 static/img/icon.png
+ create mode 100644 static/img/logo.png
+ create mode 100644 static/img/methods_proj-wide.png
+ create mode 100644 static/img/methods_proj.png
+ create mode 100644 static/img/portrait.jpg
+ create mode 100644 static/img/rpackage_proj-wide.png
+ create mode 100644 static/img/rpackage_proj.png
+ create mode 100644 supercollider.Rproj
+ create mode 100644 themes/hugo-academic/.editorconfig
+ create mode 100644 themes/hugo-academic/.github/PULL_REQUEST_TEMPLATE.md
+ create mode 100644 themes/hugo-academic/LICENSE.md
+ create mode 100644 themes/hugo-academic/README.md
+ create mode 100644 themes/hugo-academic/academic.png
+ create mode 100644 themes/hugo-academic/archetypes/default.md
+ create mode 100644 themes/hugo-academic/archetypes/home.md
+ create mode 100644 themes/hugo-academic/archetypes/post.md
+ create mode 100644 themes/hugo-academic/archetypes/project.md
+ create mode 100644 themes/hugo-academic/archetypes/publication.md
+ create mode 100644 themes/hugo-academic/archetypes/talk.md
+ create mode 100644 themes/hugo-academic/data/fonts/classic.toml
+ create mode 100644 themes/hugo-academic/data/fonts/default.toml
+ create mode 100644 themes/hugo-academic/data/fonts/playfair.toml
+ create mode 100644 themes/hugo-academic/data/i18n/languages.yaml
+ create mode 100644 themes/hugo-academic/data/sri.toml
+ create mode 100644 themes/hugo-academic/data/themes/1950s.toml
+ create mode 100644 themes/hugo-academic/data/themes/coffee.toml
+ create mode 100644 themes/hugo-academic/data/themes/dark.toml
+ create mode 100644 themes/hugo-academic/data/themes/default.toml
+ create mode 100644 themes/hugo-academic/data/themes/forest.toml
+ create mode 100644 themes/hugo-academic/data/themes/ocean.toml
+ create mode 100644 themes/hugo-academic/exampleSite/config.toml
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/about.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/contact.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/hero.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/posts.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/projects.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/publications.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/publications_selected.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/tags.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/talks.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/home/teaching.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/post/_index.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/post/faq.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/post/getting-started.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/post/managing-content.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/post/migrate-from-jekyll.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/post/widgets.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/post/writing-markdown-latex.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/project/deep-learning.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/project/example-external-project.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/publication/_index.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/publication/clothing-search.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/publication/person-re-identification.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/tags/academic/_index.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/talk/_index.md
+ create mode 100644 themes/hugo-academic/exampleSite/content/talk/example-talk.md
+ create mode 100644 themes/hugo-academic/exampleSite/static/files/citations/clothing-search.bib
+ create mode 100644 themes/hugo-academic/exampleSite/static/img/boards.jpg
+ create mode 100644 themes/hugo-academic/exampleSite/static/img/bubbles.jpg
+ create mode 100644 themes/hugo-academic/exampleSite/static/img/headers/bubbles-wide.jpg
+ create mode 100644 themes/hugo-academic/exampleSite/static/img/headers/getting-started.png
+ create mode 100644 themes/hugo-academic/exampleSite/static/img/portrait.jpg
+ create mode 100644 themes/hugo-academic/i18n/de.yaml
+ create mode 100644 themes/hugo-academic/i18n/en.yaml
+ create mode 100644 themes/hugo-academic/i18n/es.yaml
+ create mode 100644 themes/hugo-academic/i18n/eu.yaml
+ create mode 100644 themes/hugo-academic/i18n/fr.yaml
+ create mode 100644 themes/hugo-academic/i18n/it.yaml
+ create mode 100644 themes/hugo-academic/i18n/ko.yaml
+ create mode 100644 themes/hugo-academic/i18n/nl.yaml
+ create mode 100644 themes/hugo-academic/i18n/pl.yaml
+ create mode 100644 themes/hugo-academic/i18n/pt.yaml
+ create mode 100644 themes/hugo-academic/i18n/ru.yaml
+ create mode 100644 themes/hugo-academic/i18n/tr.yaml
+ create mode 100644 themes/hugo-academic/i18n/vi.yaml
+ create mode 100644 themes/hugo-academic/i18n/zh.yaml
+ create mode 100644 themes/hugo-academic/images/screenshot.png
+ create mode 100644 themes/hugo-academic/images/theme-1950s.png
+ create mode 100644 themes/hugo-academic/images/theme-coffee-playfair.png
+ create mode 100644 themes/hugo-academic/images/theme-dark.png
+ create mode 100644 themes/hugo-academic/images/theme-default.png
+ create mode 100644 themes/hugo-academic/images/theme-forest.png
+ create mode 100644 themes/hugo-academic/images/theme-ocean.png
+ create mode 100644 themes/hugo-academic/images/theme-spacer.png
+ create mode 100644 themes/hugo-academic/images/tn.png
+ create mode 100644 themes/hugo-academic/layouts/404.html
+ create mode 100644 themes/hugo-academic/layouts/_default/list.html
+ create mode 100644 themes/hugo-academic/layouts/_default/single.html
+ create mode 100644 themes/hugo-academic/layouts/home/list.html
+ create mode 100644 themes/hugo-academic/layouts/home/single.html
+ create mode 100644 themes/hugo-academic/layouts/index.css
+ create mode 100644 themes/hugo-academic/layouts/index.html
+ create mode 100644 themes/hugo-academic/layouts/partials/article_metadata.html
+ create mode 100644 themes/hugo-academic/layouts/partials/comments.html
+ create mode 100644 themes/hugo-academic/layouts/partials/css/academic.css
+ create mode 100644 themes/hugo-academic/layouts/partials/css/parse_theme.css
+ create mode 100644 themes/hugo-academic/layouts/partials/footer.html
+ create mode 100644 themes/hugo-academic/layouts/partials/footer_container.html
+ create mode 100644 themes/hugo-academic/layouts/partials/head_custom.html
+ create mode 100644 themes/hugo-academic/layouts/partials/header.html
+ create mode 100644 themes/hugo-academic/layouts/partials/header_image.html
+ create mode 100644 themes/hugo-academic/layouts/partials/navbar.html
+ create mode 100644 themes/hugo-academic/layouts/partials/pagination.html
+ create mode 100644 themes/hugo-academic/layouts/partials/post_li.html
+ create mode 100644 themes/hugo-academic/layouts/partials/publication_li_apa.html
+ create mode 100644 themes/hugo-academic/layouts/partials/publication_li_detailed.html
+ create mode 100644 themes/hugo-academic/layouts/partials/publication_li_mla.html
+ create mode 100644 themes/hugo-academic/layouts/partials/publication_li_simple.html
+ create mode 100644 themes/hugo-academic/layouts/partials/publication_links.html
+ create mode 100644 themes/hugo-academic/layouts/partials/section_pager.html
+ create mode 100644 themes/hugo-academic/layouts/partials/share.html
+ create mode 100644 themes/hugo-academic/layouts/partials/tags.html
+ create mode 100644 themes/hugo-academic/layouts/partials/talk_li_detailed.html
+ create mode 100644 themes/hugo-academic/layouts/partials/talk_li_simple.html
+ create mode 100644 themes/hugo-academic/layouts/partials/talk_links.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widget_page.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/about.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/contact.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/custom.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/hero.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/posts.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/projects.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/publications.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/publications_selected.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/tag_cloud.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/talks.html
+ create mode 100644 themes/hugo-academic/layouts/partials/widgets/talks_selected.html
+ create mode 100644 themes/hugo-academic/layouts/project/single.html
+ create mode 100644 themes/hugo-academic/layouts/publication/single.html
+ create mode 100644 themes/hugo-academic/layouts/rss.xml
+ create mode 100644 themes/hugo-academic/layouts/section/home.html
+ create mode 100644 themes/hugo-academic/layouts/section/post.html
+ create mode 100644 themes/hugo-academic/layouts/section/project.html
+ create mode 100644 themes/hugo-academic/layouts/section/publication.html
+ create mode 100644 themes/hugo-academic/layouts/section/talk.html
+ create mode 100644 themes/hugo-academic/layouts/shortcodes/alert.html
+ create mode 100644 themes/hugo-academic/layouts/shortcodes/staticref.html
+ create mode 100644 themes/hugo-academic/layouts/shortcodes/toc.html
+ create mode 100644 themes/hugo-academic/layouts/sitemap.xml
+ create mode 100644 themes/hugo-academic/layouts/talk/single.html
+ create mode 100644 themes/hugo-academic/static/img/icon-192.png
+ create mode 100644 themes/hugo-academic/static/img/icon.png
+ create mode 100644 themes/hugo-academic/static/img/portrait.jpg
+ create mode 100644 themes/hugo-academic/static/js/hugo-academic.js
+ create mode 100644 themes/hugo-academic/static/site.webmanifest
+ create mode 100644 themes/hugo-academic/theme.toml
+ create mode 100644 tr_tst2.png
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git remote add origin https://github.com/malcolmbarrett/supercollidr.git
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git push -u origin master
+Counting objects: 458, done.
+Delta compression using up to 8 threads.
+Compressing objects:   0% (1/373)   Compressing objects:   1% (4/373)   Compressing objects:   2% (8/373)   Compressing objects:   3% (12/373)   Compressing objects:   4% (15/373)   Compressing objects:   5% (19/373)   Compressing objects:   6% (23/373)   Compressing objects:   7% (27/373)   Compressing objects:   8% (30/373)   Compressing objects:   9% (34/373)   Compressing objects:  10% (38/373)   Compressing objects:  11% (42/373)   Compressing objects:  12% (45/373)   Compressing objects:  13% (49/373)   Compressing objects:  14% (53/373)   Compressing objects:  15% (56/373)   Compressing objects:  16% (60/373)   Compressing objects:  17% (64/373)   Compressing objects:  18% (68/373)   Compressing objects:  19% (71/373)   Compressing objects:  20% (75/373)   Compressing objects:  21% (79/373)   Compressing objects:  22% (83/373)   Compressing objects:  23% (86/373)   Compressing objects:  24% (90/373)   Compressing objects:  25% (94/373)   Compressing objects:  26% (97/373)   Compressing objects:  27% (101/373)   Compressing objects:  28% (105/373)   Compressing objects:  29% (109/373)   Compressing objects:  30% (112/373)   Compressing objects:  31% (116/373)   Compressing objects:  32% (120/373)   Compressing objects:  33% (124/373)   Compressing objects:  34% (127/373)   Compressing objects:  35% (131/373)   Compressing objects:  36% (135/373)   Compressing objects:  37% (139/373)   Compressing objects:  38% (142/373)   Compressing objects:  39% (146/373)   Compressing objects:  40% (150/373)   Compressing objects:  41% (153/373)   Compressing objects:  42% (157/373)   Compressing objects:  43% (161/373)   Compressing objects:  44% (165/373)   Compressing objects:  45% (168/373)   Compressing objects:  46% (172/373)   Compressing objects:  47% (176/373)   Compressing objects:  48% (180/373)   Compressing objects:  49% (183/373)   Compressing objects:  50% (187/373)   Compressing objects:  51% (191/373)   Compressing objects:  52% (194/373)   Compressing objects:  53% (198/373)   Compressing objects:  54% (202/373)   Compressing objects:  55% (206/373)   Compressing objects:  56% (209/373)   Compressing objects:  57% (213/373)   Compressing objects:  58% (217/373)   Compressing objects:  59% (221/373)   Compressing objects:  60% (224/373)   Compressing objects:  61% (228/373)   Compressing objects:  62% (232/373)   Compressing objects:  63% (235/373)   Compressing objects:  64% (239/373)   Compressing objects:  65% (243/373)   Compressing objects:  66% (247/373)   Compressing objects:  67% (250/373)   Compressing objects:  68% (254/373)   Compressing objects:  69% (258/373)   Compressing objects:  70% (262/373)   Compressing objects:  71% (265/373)   Compressing objects:  72% (269/373)   Compressing objects:  73% (273/373)   Compressing objects:  74% (277/373)   Compressing objects:  75% (280/373)   Compressing objects:  76% (284/373)   Compressing objects:  77% (288/373)   Compressing objects:  78% (291/373)   Compressing objects:  79% (295/373)   Compressing objects:  80% (299/373)   Compressing objects:  81% (303/373)   Compressing objects:  82% (306/373)   Compressing objects:  83% (310/373)   Compressing objects:  84% (314/373)   Compressing objects:  85% (318/373)   Compressing objects:  86% (321/373)   Compressing objects:  87% (325/373)   Compressing objects:  88% (329/373)   Compressing objects:  89% (332/373)   Compressing objects:  90% (336/373)   Compressing objects:  91% (340/373)   Compressing objects:  92% (344/373)   Compressing objects:  93% (347/373)   Compressing objects:  94% (351/373)   Compressing objects:  95% (355/373)   Compressing objects:  96% (359/373)   Compressing objects:  97% (362/373)   Compressing objects:  98% (366/373)   Compressing objects:  99% (370/373)   Compressing objects: 100% (373/373)   Compressing objects: 100% (373/373), done.
+Writing objects:   0% (1/458)   Writing objects:   1% (5/458)   Writing objects:   2% (10/458)   Writing objects:   3% (14/458)   Writing objects:   4% (19/458)   Writing objects:   5% (23/458)   Writing objects:   6% (28/458)   Writing objects:   7% (33/458)   Writing objects:   8% (37/458)   Writing objects:   9% (42/458)   Writing objects:  10% (46/458)   Writing objects:  11% (51/458)   Writing objects:  12% (55/458)   Writing objects:  13% (60/458)   Writing objects:  14% (65/458)   Writing objects:  15% (69/458)   Writing objects:  16% (74/458)   Writing objects:  17% (78/458)   Writing objects:  18% (83/458)   Writing objects:  19% (88/458)   Writing objects:  20% (92/458)   Writing objects:  21% (97/458)   Writing objects:  22% (101/458)   Writing objects:  23% (107/458)   Writing objects:  24% (110/458)   Writing objects:  25% (115/458)   Writing objects:  26% (120/458)   Writing objects:  27% (124/458)   Writing objects:  28% (129/458)   Writing objects:  29% (133/458)   Writing objects:  30% (138/458)   Writing objects:  31% (142/458)   Writing objects:  31% (146/458), 1.59 MiB | 1.07 MiB/s   Writing objects:  31% (146/458), 2.59 MiB | 1.29 MiB/s   Writing objects:  32% (147/458), 2.59 MiB | 1007.00 KiB/s   Writing objects:  33% (152/458), 2.59 MiB | 1007.00 KiB/s   Writing objects:  33% (154/458), 2.59 MiB | 1007.00 KiB/s   Writing objects:  34% (156/458), 2.59 MiB | 1007.00 KiB/s   Writing objects:  35% (161/458), 4.07 MiB | 1.30 MiB/s   Writing objects:  36% (165/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  37% (170/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  38% (175/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  39% (179/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  40% (184/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  41% (188/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  42% (193/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  43% (198/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  44% (202/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  45% (207/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  46% (211/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  47% (216/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  48% (220/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  49% (225/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  50% (230/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  51% (234/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  52% (239/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  53% (243/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  54% (250/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  55% (252/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  56% (257/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  57% (262/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  58% (266/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  59% (271/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  60% (275/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  61% (280/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  62% (284/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  63% (289/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  64% (294/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  65% (298/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  66% (303/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  67% (307/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  68% (312/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  69% (317/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  70% (322/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  71% (326/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  72% (330/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  73% (335/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  74% (339/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  75% (344/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  76% (349/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  77% (353/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  78% (358/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  79% (362/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  80% (367/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  81% (371/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  82% (376/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  83% (381/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  83% (384/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  84% (385/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  85% (390/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  86% (394/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  87% (399/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  88% (404/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  89% (408/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  90% (415/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  91% (417/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  92% (422/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  93% (426/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  94% (431/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  95% (436/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  96% (440/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  97% (445/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  98% (449/458), 4.48 MiB | 1.20 MiB/s   Writing objects:  99% (454/458), 4.48 MiB | 1.20 MiB/s   Writing objects: 100% (458/458), 4.48 MiB | 1.20 MiB/s   Writing objects: 100% (458/458), 5.49 MiB | 1.20 MiB/s, done.
+Total 458 (delta 111), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/111)   [Kremote: Resolving deltas:   1% (2/111)   [Kremote: Resolving deltas:   5% (6/111)   [Kremote: Resolving deltas:   8% (9/111)   [Kremote: Resolving deltas:   9% (10/111)   [Kremote: Resolving deltas:  10% (12/111)   [Kremote: Resolving deltas:  11% (13/111)   [Kremote: Resolving deltas:  15% (17/111)   [Kremote: Resolving deltas:  19% (22/111)   [Kremote: Resolving deltas:  21% (24/111)   [Kremote: Resolving deltas:  43% (48/111)   [Kremote: Resolving deltas:  61% (68/111)   [Kremote: Resolving deltas:  62% (69/111)   [Kremote: Resolving deltas:  63% (70/111)   [Kremote: Resolving deltas:  64% (72/111)   [Kremote: Resolving deltas:  76% (85/111)   [Kremote: Resolving deltas:  77% (86/111)   [Kremote: Resolving deltas:  78% (87/111)   [Kremote: Resolving deltas:  80% (89/111)   [Kremote: Resolving deltas:  81% (90/111)   [Kremote: Resolving deltas:  92% (103/111)   [Kremote: Resolving deltas:  95% (106/111)   [Kremote: Resolving deltas:  96% (107/111)   [Kremote: Resolving deltas:  97% (108/111)   [Kremote: Resolving deltas:  98% (109/111)   [Kremote: Resolving deltas:  99% (110/111)   [Kremote: Resolving deltas: 100% (111/111)   [Kremote: Resolving deltas: 100% (111/111), done.[K
+To https://github.com/malcolmbarrett/supercollidr.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+]0;~/Google Drive/Active/website/supercolliderMacBook-Pro:supercollider malcolmbarrett$ git commit -"[Km -"u[K[K[K"update url"[C url"b url"a url"s url"e url"[C url"
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+	[31mmodified:   .Rproj.user/5CF5C632/console06/4CC7E805[m
+	[31mmodified:   .Rproj.user/5CF5C632/console06/4CC7E805.env[m
+	[31mmodified:   .Rproj.user/5CF5C632/sources/prop/A596889E[m
+	[31mmodified:   .Rproj.user/5CF5C632/sources/s-853790BC/B6C6EC59[m
+	[31mmodified:   .Rproj.user/5CF5C632/sources/s-853790BC/B6C6EC59-contents[m
+	[31mmodified:   config.toml[m
+	[31mmodified:   public/404.html[m
+	[31mmodified:   public/home/index.xml[m
+	[31mmodified:   public/index.html[m
+	[31mmodified:   public/index.xml[m
+	[31mmodified:   public/post/index.html[m
+	[31mmodified:   public/post/index.xml[m
+	[31mmodified:   public/post/page/1/index.html[m
+	[31mmodified:   public/project/cancer/index.html[m
+	[31mmodified:   public/project/index.xml[m
+	[31mmodified:   public/project/methods/index.html[m
+	[31mmodified:   public/project/predicting_fu/index.html[m
+	[31mmodified:   public/project/rpackages/index.html[m
+	[31mmodified:   public/project/vision_qol/index.html[m
+	[31mmodified:   public/publication/cam_cancer_pain/index.html[m
+	[31mmodified:   public/publication/cf_caregivers/index.html[m
+	[31mmodified:   public/publication/index.html[m
+	[31mmodified:   public/publication/index.xml[m
+	[31mmodified:   public/publication/iud_metaanalysis/index.html[m
+	[31mmodified:   public/publication/qol_cancer_pain/index.html[m
+	[31mmodified:   public/publication/race_qol_pain/index.html[m
+	[31mmodified:   public/publication/symtom_distress/index.html[m
+	[31mmodified:   public/publication_types/2/index.html[m
+	[31mmodified:   public/publication_types/2/page/1/index.html[m
+	[31mmodified:   public/sitemap.xml[m
+	[31mmodified:   public/tags/academic/index.html[m
+	[31mmodified:   public/tags/academic/page/1/index.html[m
+	[31mmodified:   public/tags/cancer/index.html[m
+	[31mmodified:   public/tags/cancer/page/1/index.html[m
+	[31mmodified:   public/tags/coding/index.html[m
+	[31mmodified:   public/tags/coding/page/1/index.html[m
+	[31mmodified:   public/tags/eye_vision/index.html[m
+	[31mmodified:   public/tags/eye_vision/page/1/index.html[m
+	[31mmodified:   public/tags/methods/index.html[m
+	[31mmodified:   public/tags/methods/page/1/index.html[m
+	[31mmodified:   public/tags/r/index.html[m
+	[31mmodified:   public/tags/r/page/1/index.html[m
+	[31mmodified:   public/talk/cam_pain_poster/index.html[m
+	[31mmodified:   public/talk/ifh_ndpp_poster/index.html[m
+	[31mmodified:   public/talk/index.html[m
+	[31mmodified:   public/talk/index.xml[m
+	[31mmodified:   public/talk/iud_cc_poster/index.html[m
+	[31mmodified:   public/talk/metanalysis_viz_talk/index.html[m
+
+no changes added to commit
+git add .
