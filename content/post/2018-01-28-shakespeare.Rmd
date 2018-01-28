@@ -2,6 +2,7 @@
 title: 'Stochastic Shakespeare: Sonnets Produced by Markov Chains in R'
 author: "Malcolm Barrett"
 date: '2018-01-28'
+description: 'test test test'
 slug: shakespeare
 categories: [r]
 tags: [r]
