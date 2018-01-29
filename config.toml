@@ -20,7 +20,7 @@ preserveTaxonomyNames = true
 paginate = 10
 
 # Enable comments by entering your Disqus shortname
-disqusShortname = "malco-io.disqus.com"
+disqusShortname = "malco-io"
 
 # Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = "UA-113255540-1"
