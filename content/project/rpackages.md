@@ -8,7 +8,7 @@ draft = false
 tags = ["R", "coding"]
 
 # Project summary to display on homepage.
-summary = "DAG analysis and visualization, publication-quality tables, working with confounders, visualization for meta-analyses"
+summary = "DAG analysis and visualization, working with confounders, visualization for meta-analyses"
 
 # Optional image to display on homepage.
 image_preview = "rpackage_proj.png"
