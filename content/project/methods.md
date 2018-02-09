@@ -30,4 +30,4 @@ caption = ""
 
 +++
 
-I entered epidemiology because I felt my talented clinical collegues needed help doing their studies well. My research in methodology focuses on bringing first princples in epidemiology to applied analysis. At a certain point in my training, I stopped being able to find answers to my questions about bias, so I started to answer them myself. This work has focused in particular on working with confounding and selection bias.
+I entered epidemiology because I felt my talented clinical collegues needed help doing their studies well. My research in methodology focuses on bringing first princples in epidemiology to applied analysis. At a certain point in my training, I stopped being able to find answers to my questions about bias, so I started to try to answer them myself. This work has focused in particular on working with confounding and selection bias.
