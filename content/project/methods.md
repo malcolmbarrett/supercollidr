@@ -30,4 +30,4 @@ caption = ""
 
 +++
 
-My research in methodology focuses on bringing first princples in epidemiology to applied analysis. This work has focused in particular on working with confounding and selection bias.
+My research in methodology focuses on bringing first principles in epidemiology to applied analysis. This work has focused in particular on working with confounding and selection bias.
