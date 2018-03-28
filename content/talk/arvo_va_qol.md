@@ -1,7 +1,7 @@
 +++
 title = "The Impact of 8-year Change in Visual Acuity on Novel NEI-VFQ- 25 Composites in the Los Angeles Latino Eye Study (LALES)"
 authors = ["Barrett M.", "McKean-Cowdin R.", "Jiang X.", "Torres M.", "Choudhury F.", "Fairbrother-Crisp A.", "Burkemper B.", "Varma R."]
-date = 2018-05-02T09:54:53-08:00  # Schedule page publish date.
+date = 2017-05-02T09:54:53-08:00  # Schedule page publish date.
 draft = false
 
 # Talk start and end times.

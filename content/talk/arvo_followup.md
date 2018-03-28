@@ -1,7 +1,7 @@
 +++
 title = "Psychosocial Predictors of Eye Care Utilization in the African American Eye Disease Study"
 authors = ["McKean-Cowdin R.", "Barrett M.", "Unger, J.", "Torres M.", "Fairbrother-Crisp A.", "Burkemper B.", "Varma R."]
-date = 2018-05-01T09:54:53-08:00  # Schedule page publish date.
+date = 2017-05-01T09:54:53-08:00  # Schedule page publish date.
 draft = false
 
 # Talk start and end times.
