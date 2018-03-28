@@ -1,7 +1,7 @@
 +++
 title = "Shrinkage Regression for Confounder Adjustment in the Presence of Collider-Stratification Bias."
 authors = ["Barrett M."]
-date = 2018-06-19T09:54:53-08:00  # Schedule page publish date.
+date = 2017-06-19T09:54:53-08:00  # Schedule page publish date.
 draft = false
 
 # Talk start and end times.
