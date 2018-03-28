@@ -32,4 +32,6 @@ You can learn more about it on the [ggdag website](https://ggdag.netlify.com/), 
 - [An Introduction to Directed Acyclic Graphs](https://ggdag.netlify.com/articles/intro-to-dags.html)
 - [Common Structures of Bias](https://ggdag.netlify.com/articles/bias-structures.html)
 
-Give it a try, and please file an bugs or suggestions to the [GitHub repo](https://github.com/malcolmbarrett/ggdag). Thanks!
+Give it a try, and please file an bugs or suggestions to the [GitHub repo](https://github.com/malcolmbarrett/ggdag).
+
+I also want to thank a few of my fellow USC PhDs, David Bogumil, Ugonna Ihenacho, and Zhi Yang, for helping me polish the articles and offering helpful suggestions on some of the aesthetic details of `ggdag`. Thanks, y'all!

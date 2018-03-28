@@ -25,10 +25,10 @@ dag</code></pre>
 <pre><code>## # A tibble: 4 x 8
 ##   name      x     y direction to     xend  yend circular
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
-## 1 x      9.80  7.95 -&gt;        y      9.04  8.61 FALSE   
-## 2 z      9.99  8.94 -&gt;        x      9.80  7.95 FALSE   
-## 3 z      9.99  8.94 -&gt;        y      9.04  8.61 FALSE   
-## 4 y      9.04  8.61 &lt;NA&gt;      &lt;NA&gt;  NA    NA    FALSE</code></pre>
+## 1 x      3.00  3.57 -&gt;        y      3.98  3.76 FALSE   
+## 2 z      3.66  2.82 -&gt;        x      3.00  3.57 FALSE   
+## 3 z      3.66  2.82 -&gt;        y      3.98  3.76 FALSE   
+## 4 y      3.98  3.76 &lt;NA&gt;      &lt;NA&gt;  NA    NA    FALSE</code></pre>
 <pre class="r"><code>ggdag(dag)</code></pre>
 <p><img src="/rmarkdown-libs/figure-html4/unnamed-chunk-1-1.png" width="672" /></p>
 <p>You can learn more about it on the <a href="https://ggdag.netlify.com/">ggdag website</a>, a <code>pkgdown</code> site that includes rendered documentation and the following vignettes:</p>
@@ -37,4 +37,5 @@ dag</code></pre>
 <li><a href="https://ggdag.netlify.com/articles/intro-to-dags.html">An Introduction to Directed Acyclic Graphs</a></li>
 <li><a href="https://ggdag.netlify.com/articles/bias-structures.html">Common Structures of Bias</a></li>
 </ul>
-<p>Give it a try, and please file an bugs or suggestions to the <a href="https://github.com/malcolmbarrett/ggdag">GitHub repo</a>. Thanks!</p>
+<p>Give it a try, and please file an bugs or suggestions to the <a href="https://github.com/malcolmbarrett/ggdag">GitHub repo</a>.</p>
+<p>I also want to thank a few of my fellow USC PhDs, David Bogumil, Ugonna Ihenacho, and Zhi Yang, for helping me polish the articles and offering helpful suggestions on some of the aesthetic details of <code>ggdag</code>. Thanks, y’all!</p>
