@@ -11,7 +11,7 @@ tags:
   - causalinference
 ---
 
-I'm pleased to announce the release of `ggdag` 0.1.0 in CRAN! `ggdag` uses the powerful `dagitty` package to create and analyze structural causal models and plot them using `ggplot2` and `ggraph` in a tidy, consistent, and easy manner. You can use `dagitty` objects directly in `ggdag`, but `ggdag` also includes wrappers to make DAGs using a more R-like syntax:
+I'm pleased to announce the release of `ggdag` 0.1.0 on CRAN! `ggdag` uses the powerful `dagitty` package to create and analyze structural causal models and plot them using `ggplot2` and `ggraph` in a tidy, consistent, and easy manner. You can use `dagitty` objects directly in `ggdag`, but `ggdag` also includes wrappers to make DAGs using a more R-like syntax:
 
 ```{r warning=FALSE, message=FALSE}
 # install.packages("ggdag")
