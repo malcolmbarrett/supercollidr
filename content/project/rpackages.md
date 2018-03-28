@@ -31,10 +31,9 @@ caption = ""
 # **Publication-quality tables**: `mable`, a package influenced by `ggplot2` and built on top of `knitr::kable()` and `kableExtra` to produce fluid, #easy-to-build tables for `RMarkdown`.
 # 
 # **Visualization for meta-analyses**: `ggmeta`, including `ggplot2` functionality for forest plots, funnel plots, and influence plots.
+# **Working with confounders**: `confoundr`, a package for detecting and visualizing confounding in observational studies.
 +++
 
-My R Packages are currently available on [GitHub](//github.com/malcolmbarrett), and I will be submitting some of them to CRAN soon.
+The source code for my R Packages can be found on [GitHub](//github.com/malcolmbarrett).
 
 **DAG analysis and visualization**: `ggdag`, a package for working with directed acyclic graphs in `ggplot2` and built on top of `dagitty`. `ggdag` focuses on working with selection bias, confounding, and selecting the right variables to adjust for in an analysis.
-
-**Working with confounders**: `confoundr`, a package for detecting and visualizing confounding in observational studies.

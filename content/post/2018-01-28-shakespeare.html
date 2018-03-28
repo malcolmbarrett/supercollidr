@@ -1,8 +1,7 @@
 ---
 title: 'Stochastic Shakespeare: Sonnets Produced by Markov Chains in R'
 author: "Malcolm Barrett"
-date: '2018-01-28'
-description: 'test test test'
+date: '2018-01-26'
 slug: shakespeare
 categories: [r]
 tags: [r]
@@ -79,11 +78,8 @@ punctuation_probs &lt;- punctuation[punctuation %not_in% c(&quot;-&quot;, &quot;
 <pre class="r"><code>#  fit a Markov Chain
 sonnet_chain &lt;- markovchainFit(bills_words)
 cat(markovchainSequence(n = 10, markovchain = sonnet_chain$estimate), collapse =  &quot; &quot;)</code></pre>
-<p>doubting the mortal moon hath her husband’s shape so proud</p>
-<div class="figure">
-<img src="https://media.giphy.com/media/bXKWWJXUJkBsQ/giphy.gif" />
-
-</div>
+<p>with white nor my self thou with gentle verse which</p>
+<p><img src="https://media.giphy.com/media/bXKWWJXUJkBsQ/giphy.gif" /></p>
 <p>And finally, here are a few functions to piece together lines to make them look like a sonnet using the <code>walk()</code> function from <code>purrr</code> to print out the lines (since it’s a side effect). No, they’re not actually iambic pentameter :(</p>
 <pre class="r"><code>write_a_line &lt;- function(n_lines = 1) {
   walk(1:n_lines, function(.x) {
@@ -203,10 +199,7 @@ exceeded by our time thou shalt hap to wonder,<br />
 grief though rosy lips and heart wound.</p>
 <p>thou repent yet do thy parts do our!<br />
 death do show it is daily new to.</p>
-<div class="figure">
-<img src="https://media.giphy.com/media/3o6Ztf18L1Tsmxd528/giphy.gif" />
-
-</div>
+<p><img src="https://media.giphy.com/media/3o6Ztf18L1Tsmxd528/giphy.gif" /></p>
 </div>
 </div>
 <div id="update" class="section level1">
@@ -265,96 +258,93 @@ markovify_sonnet &lt;- function() {
 <div id="markovify-sonnet-1" class="section level2">
 <h2>Markovify Sonnet 1:</h2>
 <pre class="r"><code>markovify_sonnet()</code></pre>
-<p>unmoved, cold, and to his verse,<br />
-hung with the trophies of my wailing chief,<br />
-giving him aid, my verse can sit,<br />
-hung with the bett’ring of the dead,</p>
-<p>suns of the wide world’s common place?<br />
-exceeded by the self-same sky,<br />
-cheered and checked even by the grave and thee.<br />
-till then, not show my wit:</p>
-<p>am of my flesh were thought,<br />
-lo! in the old world could say<br />
-two loves i have scanted all,<br />
-not that the world doth spend</p>
-<p>no, i am shamed by that i in this,<br />
-feeding on that which doth in it live.</p>
+<p>unmoved, cold, and to be belov’d of many,<br />
+hung with the drops of this most balmy time,<br />
+my heart and eyes have done:<br />
+hung with the drops of this madding fever!</p>
+<p>my reason, the physician to my purpose bred,<br />
+exceeded by the motion of thine<br />
+like as, to make some special instant special-blest,<br />
+till my bad angel fire my good allow?</p>
+<p>our dates are brief, and therefore from my side,<br />
+they that have profan’d their scarlet ornaments<br />
+two loves i have confess’d that he may<br />
+not mine own fears, nor the gilded monuments</p>
+<p>no, i am perjur’d most;<br />
+feeding on that which on thy face.</p>
 </div>
 <div id="markovify-sonnet-2" class="section level2">
 <h2>Markovify Sonnet 2:</h2>
 <pre class="r"><code>markovify_sonnet()</code></pre>
-<p>were to be a satire to decay,<br />
-poor soul, the centre of my love,<br />
-that having such a counterpart shall fame his wit,<br />
-or whether revolution be the view;</p>
-<p>gentle thou art, therefore to be assail’d;<br />
-wherein i should despair, i should grow mad,<br />
-ere you were your self; but, love you dearer:<br />
-suffering my friend for my sin you did exceed</p>
-<p>stirr’d by a painted beauty to his store;<br />
-bearing the wanton burden of the watery main,<br />
-hast thou, the master mistress of my heart;<br />
-lose all and more by paying too much disdain;</p>
-<p>revenge upon myself with thee remains.<br />
-thus can my love shall in my tongue</p>
+<p>had, having, and in my sight,<br />
+it is so proud thy service to despise,<br />
+our dates are brief, and therefore to be invited<br />
+or as the death-bed, whereon it must expire,</p>
+<p>were to be with you alone,<br />
+stirr’d by a part of all his trim,<br />
+how would, i say, mine eyes best see,<br />
+or, if they sleep, thy picture in my jail:</p>
+<p>resembling strong youth in every blessed shape we know.<br />
+bearing thy heart, which i will not be shown;<br />
+hast thou, the master mistress of my speaking breast,<br />
+what potions have i slept in your will,</p>
+<p>revenge upon myself with thee shall stay.<br />
+thus policy in love, but truly write.</p>
 </div>
 <div id="markovify-sonnet-3" class="section level2">
 <h2>Markovify Sonnet 3:</h2>
 <pre class="r"><code>markovify_sonnet()</code></pre>
-<p>beyond all date; even to the learned’s wing<br />
-within the gentle closure of my heart;<br />
-speaking of your praise shall still find room<br />
-thee have i been absent in the spring,</p>
-<p>feeds on the ashes of his great verse,<br />
-tell me thou lov’st those<br />
-no, time, thou shalt strangely pass,<br />
-when i of you i hold such strife</p>
-<p>wishing me like to thee i both defy,<br />
-no longer mourn for me than mine own desert,<br />
-suns of the shore, where two contracted new<br />
-presume not on thy heart torment me with disdain,</p>
-<p>savage, extreme, rude, cruel, not to tell me so;<br />
-perforce am thine, and born of love.</p>
+<p>save what shall be my comfort of thy jealousy?<br />
+within the gentle closure of my heart another youth,<br />
+say that i cannot blame thee, for my stain.<br />
+at random from the thing they most do show,</p>
+<p>be, as thy love is not so?<br />
+wishing me like to thee i speed:<br />
+no, i am still with thee alone:<br />
+when day’s oppression is not forbidden usury,</p>
+<p>there lives more life in one of your frame;<br />
+no bitterness that i come so near,<br />
+suns of the fairest and most most loving breast.<br />
+presume not on thy humour doth depend:</p>
+<p>savage, extreme, rude, cruel, not to show it,<br />
+perforce am thine, and all my best of love.</p>
 </div>
 <div id="markovify-sonnet-4" class="section level2">
 <h2>Markovify Sonnet 4:</h2>
 <pre class="r"><code>markovify_sonnet()</code></pre>
-<p>look in thy steel bosom’s ward,<br />
-kind is my love as oft as thou art,<br />
-divert strong minds to the edge of doom.<br />
-mad in pursuit of the time,</p>
-<p>revenge upon myself with thee alone:<br />
-sweet love, thy truth, thy constancy;<br />
-whilst, like a canker in the world must die:<br />
-unlook’d for joy in that i prove,</p>
-<p>in the praise thereof spends all his growth<br />
-kind is my verse in time to come,<br />
-unlook’d for joy in that long year set,<br />
-i see barren of new pride,</p>
-<p>feeding on that which still doth grow?<br />
-angry that his prescriptions are not my amiss.</p>
+<p>with mine compare thou thine own sweet brood;<br />
+o! from what power hast thou this powerful rhyme;<br />
+unmoved, cold, and to be a devil,<br />
+make answer muse: wilt thou be denied!</p>
+<p>revenge upon myself with thee partake?<br />
+bring me within the level of your love.<br />
+divert strong minds to the learned’s wing<br />
+crowning the present, doubting of the time,</p>
+<p>looking on thee in the spring,<br />
+o! let me be borne alone.<br />
+crowning the present, doubting of the spring,<br />
+before the golden tresses of the spring,</p>
+<p>divert strong minds to the ground;<br />
+angry that his prescriptions are not so much hold.</p>
 </div>
 <div id="markovify-sonnet-5" class="section level2">
 <h2>Markovify Sonnet 5:</h2>
 <pre class="r"><code>markovify_sonnet()</code></pre>
-<p>of him, myself, and curse my fate,<br />
-you are so strongly in my judgment’s place.<br />
-nor are mine ears with thy much clearer light,<br />
-mine eye is not false i swear,</p>
-<p>till i see down-raz’d,<br />
-ten times thy self in eyes of men.<br />
-roses have thorns, and play as wantonly<br />
-you are so strongly in my jail:</p>
-<p>whereon the stars do i ensconce me here,<br />
+<p>of bird, of flower, or shape which it contains,<br />
+you are so strongly in my way,<br />
+mine own true love that touches me more nearly.<br />
+crowning the present, doubting of the roses.</p>
+<p>till whatsoever star that ushers in the rose;<br />
 before the golden tresses of the fleeting year!<br />
-too base of thee to this hell.<br />
-too base of thee to be won,</p>
-<p>farewell! thou art why should he live,<br />
-save thou, my music, music play’st.</p>
-<div class="figure">
-<img src="https://media.giphy.com/media/JPW7lVDXKJgXu/giphy.gif" />
-
-</div>
+cannot dispraise, but in my purpose nothing.<br />
+lord of my flesh were thought,</p>
+<p>whereon the stars do i not say so,<br />
+in tender embassy of love there bred,<br />
+too base of thee to be won,<br />
+lord of my silence cannot boast;</p>
+<p>most true it is, that i call<br />
+save what is your substance, whereof are you made.</p>
+<p><img src="https://media.giphy.com/media/JPW7lVDXKJgXu/giphy.gif" /></p>
 <p>Well, call me Shockedspeare.</p>
 <p><em>Exit, pursued by a bear</em></p>
 </div>
