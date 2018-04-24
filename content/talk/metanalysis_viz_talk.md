@@ -1,9 +1,9 @@
 +++
 date = 2018-03-01T10:00:00  # Schedule page publish date.
 
-title = "Data Visualization for Meta-Analyses"
-time_start = 2018-03-01T10:00:00 
-time_end = 2018-03-01T12:00:00 
+title = "Introduction to Data Visualization for Meta-Analysis"
+time_start = 2018-04-23T10:00:00 
+time_end = 2018-04-23T12:00:00 
 abstract = ""
 abstract_short = ""
 event = "Guest Lecture for PM 605: Systematic Review and Meta-Analysis"
@@ -19,10 +19,10 @@ selected = false
 projects = ["rpackages"]
 
 # Links (optional).
-url_pdf = ""
-url_slides = ""
+url_pdf = "https://speakerdeck.com/malcolmbarrett/introduction-to-data-visualization-for-meta-analysis"
+url_slides = "https://htmlpreview.github.io/?https://github.com/malcolmbarrett/ma_viz_workshop/blob/master/ma_workshop.html"
 url_video = ""
-url_code = ""
+url_code = "https://github.com/malcolmbarrett/ma_viz_workshop"
 
 # Does the content use math formatting?
 math = true
