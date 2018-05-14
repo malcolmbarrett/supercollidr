@@ -11,7 +11,7 @@ tags = ["eye_vision"]
 summary = "Humans are visual creatures. How does vision loss affect quality of life?"
 
 # Optional image to display on homepage.
-image_preview = "glasses-1934296_1920.jpg"
+image_preview = "change.png"
 
 # Optional external URL for project (replaces project detail page).
 external_link = ""
