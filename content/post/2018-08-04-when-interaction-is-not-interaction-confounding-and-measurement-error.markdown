@@ -163,7 +163,7 @@ compare_models()
 ```r
 df %>% 
   ggplot(aes(x = x, y = y, col = factor(z))) +
-    geom_point(alpha = .2, size = 2.5) + 
+    geom_point(alpha = .02, size = 2.5) + 
     geom_smooth(method = "lm", se = FALSE, size = 1.2) +
     geom_smooth(aes(group = 1, col = "Crude Estimate"), method = "lm", se = FALSE, size = 1.2) + 
     scale_color_manual("Confounder \n(Measured well)", values = scales::viridis_pal()(3)[c(1, 3, 2)]) +
@@ -246,7 +246,7 @@ compare_models("x_1980")
 ```r
 df %>% 
   ggplot(aes(x = x_1980, y = y, col = factor(z))) +
-    geom_point(alpha = .2, size = 2.5) + 
+    geom_point(alpha = .02, size = 2.5) + 
     geom_smooth(method = "lm", se = FALSE, size = 1.2) +
     scale_color_viridis_d("Confounder \n(Measured well)") +
     theme_minimal(base_size = 12) +
@@ -342,7 +342,7 @@ compare_models("x_2018")
 ```r
 df %>% 
   ggplot(aes(x = x_2018, y = y, col = factor(z))) +
-    geom_point(alpha = .2, size = 2.5) + 
+    geom_point(alpha = .02, size = 2.5) + 
     geom_smooth(method = "lm", se = FALSE, size = 1.2) +
     scale_color_viridis_d("Confounder \n(Measured well)") +
     theme_minimal(base_size = 12) +
@@ -481,7 +481,7 @@ compare_models(confounder = "z_results_broken")
 ```r
 df %>% 
   ggplot(aes(x = x, y = y, col = factor(z_results_broken))) +
-    geom_point(alpha = .2, size = 2.5) + 
+    geom_point(alpha = .02, size = 2.5) + 
     geom_smooth(method = "lm", se = FALSE, size = 1.2) +
     scale_color_viridis_d("Confounder \n(Z-ometer, broken)") +
     theme_minimal(base_size = 12) +
@@ -548,7 +548,7 @@ compare_models(confounder = "z_results")
 ```r
 df %>% 
   ggplot(aes(x = x, y = y, col = factor(z_results))) +
-    geom_point(alpha = .2, size = 2.5) + 
+    geom_point(alpha = .02, size = 2.5) + 
     geom_smooth(method = "lm", se = FALSE, size = 1.2) +
     scale_color_viridis_d("Confounder \n(Z-ometer)") +
     theme_minimal(base_size = 12) +
