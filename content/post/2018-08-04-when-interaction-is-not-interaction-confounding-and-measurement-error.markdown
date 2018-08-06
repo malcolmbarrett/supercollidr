@@ -509,7 +509,7 @@ compare_models(confounder = "z_results_broken")
 </table>
 
 ```r
-plot_models(z = z_results_broken, z_label = "Confounder \n(Z-ometer, broken)")
+plot_models(z = z_results_broken, z_label = "Confounder (Z-ometer, broken)")
 ```
 
 <img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/z_results-1.png" width="672" />
@@ -569,7 +569,7 @@ compare_models(confounder = "z_results")
 </table>
 
 ```r
-plot_models(z = z_results, z_label = "Confounder \n(Z-ometer, broken)")
+plot_models(z = z_results, z_label = "Confounder (Z-ometer, broken)")
 ```
 
 <img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/z_results_broken-1.png" width="672" />

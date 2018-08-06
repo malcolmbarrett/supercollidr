@@ -266,7 +266,7 @@ For both devices, there appears to be a little interaction (probably only detect
 ```{r z_results}
 compare_models(confounder = "z_results_broken")
 
-plot_models(z = z_results_broken, z_label = "Confounder \n(Z-ometer, broken)")
+plot_models(z = z_results_broken, z_label = "Confounder (Z-ometer, broken)")
 ```
 
 ### Mismeasured `z`, independent of `y`
@@ -274,7 +274,7 @@ plot_models(z = z_results_broken, z_label = "Confounder \n(Z-ometer, broken)")
 ```{r z_results_broken}
 compare_models(confounder = "z_results")
 
-plot_models(z = z_results, z_label = "Confounder \n(Z-ometer, broken)")
+plot_models(z = z_results, z_label = "Confounder (Z-ometer, broken)")
 ```
 
 So, mismeasurement of both `x` and `z` can cause problems. Under most circumstances, of course, we are mismeasuring more than one variable (including `y`!). Moreover, the errors in the way those variables are measured may themselves be dependent. We need to, then, be very mindful of the structures of these bias and, if necessary, try to address them with bias analysis approaches. 
