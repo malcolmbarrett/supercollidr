@@ -149,8 +149,8 @@ plot_models <- function(x = x,
     p2 <- p2 + theme(legend.position = "none")
     }
   
-  test <- p1a + p2
-  pl1 <- cowplot::plot_grid(test, align = "h")
+  patchworked <- p1a + p2
+  pl1 <- cowplot::plot_grid(patchworked, align = "h")
   pl2 <- cowplot::add_sub(pl1, x_label, 
                           vpadding = grid::unit(0,"lines"), 
                           y = 4.5, x = .5, vjust = 4.5)
