@@ -25,6 +25,7 @@ library(tidyverse)
 library(kableExtra) # to add headers on kable() tables
 library(knitr)
 library(ggdag)
+library(patchwork) # to combine the plots
 options(knitr.kable.NA = "--") # don't show NA values in kable()
 
 set.seed(293951)
@@ -74,6 +75,7 @@ We'll consider what happens when we mismeasure `x` or `z`. For each scenario, we
 * `tidy_lm()` tidies the regression models and formats the numbers a little
 * `models_kable()` joins two tables and renders them with `kable()` using the `kableExtra` package to add a couple of headers
 * `compare_models()` combines these two functions and accepts the variables we want to change as arguments so we don't need to rewrite formulas every time
+* `plot_models()` plots the relationship between `x` and `y` by levels of `z` with hex bins (for the distribution) and regression lines (to assess interaction), combining them with the `patchwork` and `cowplot` packages (plus a little tidy eval magic!)
 
 
 ```r
@@ -103,6 +105,57 @@ compare_models <- function(exposure = "x", confounder = "z", ...) {
     tidy_lm()
   
   models_kable(no_int, int, ...)
+}
+
+plot_models <- function(x = x,
+                        z = z,
+                        x_label = "x (Measured well)", 
+                        z_label = "Confounder (Measured well)",
+                        crude = FALSE) {
+  x <- rlang::enquo(x)
+  z <- rlang::enquo(z)
+  
+  p1 <- df %>% 
+    ggplot(aes(x = !!x, y = y, col = factor(!!z))) +
+      geom_hex(aes(fill = factor(z)), col = "white", alpha = .7) +
+      scale_color_manual(name = z_label, values = c("#56B4E9", "#EFA722", "#E36A25")) + 
+      scale_fill_manual(name = z_label, values = c("#56B4E9", "#EFA722", "#E36A25")) + 
+      theme_minimal(base_size = 12) +
+      theme(legend.position = "bottom",
+            axis.title.x = element_blank()) +
+      labs(y = "y (Measured well)") + 
+      ylim(c(-10, 16))
+  
+  legend <- cowplot::get_legend(p1)
+  
+  p1a <- p1 + theme(legend.position = "none")
+  
+  p2 <- df %>% 
+    ggplot(aes(x = !!x, y = y, col = factor(!!z))) +
+      geom_hex(fill = "grey92", col = "white", alpha = .8) +
+      geom_smooth(method = "lm", se = FALSE, size = .9) + 
+      scale_color_manual(name = z_label, values = c("#56B4E9", "#EFA722", "#E36A25")) + 
+      theme_minimal(base_size = 12) +
+      theme(legend.position = "none",
+              axis.title = element_blank()) +
+      ylim(c(-10, 16))
+  
+  if (crude) {
+    p2 <- p2 + 
+            geom_smooth(aes(group = 1, col = "Crude Estimate"), 
+                                    method = "lm", se = FALSE, size = .9) +
+            theme(legend.position = "bottom")
+    legend <- cowplot::get_legend(p2)
+    p2 <- p2 + theme(legend.position = "none")
+    }
+  
+  test <- p1a + p2
+  pl1 <- cowplot::plot_grid(test, align = "h")
+  pl2 <- cowplot::add_sub(pl1, x_label, 
+                          vpadding = grid::unit(0,"lines"), 
+                          y = 4.5, x = .5, vjust = 4.5)
+  pl3 <- cowplot::plot_grid(NULL, legend, NULL, nrow = 1)
+  cowplot::plot_grid(pl2, pl3, ncol = 1, rel_heights = c(1.5, .2))
 }
 ```
 
@@ -161,15 +214,7 @@ compare_models()
 </table>
 
 ```r
-df %>% 
-  ggplot(aes(x = x, y = y, col = factor(z))) +
-    geom_point(alpha = .02, size = 2.5) + 
-    geom_smooth(method = "lm", se = FALSE, size = 1.2) +
-    geom_smooth(aes(group = 1, col = "Crude Estimate"), method = "lm", se = FALSE, size = 1.2) + 
-    scale_color_manual("Confounder \n(Measured well)", values = scales::viridis_pal()(3)[c(1, 3, 2)]) +
-    theme_minimal(base_size = 12) +
-    labs(x = "x (Measured well)",
-         y = "y (Measured well)")
+plot_models(crude = TRUE)
 ```
 
 <img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/correct_model-1.png" width="672" />
@@ -185,7 +230,7 @@ When we use `x_1980` as a proxy for `x`, there now appears to be an interaction 
 
 ```r
 measureator2018 <- function(x) x + rnorm(10000)
-measureator1980 <- function(x) ifelse(y > 0, x + rnorm(10000, sd = 1.5), x + rnorm(10000, sd = 3))
+measureator1980 <- function(x) ifelse(y > 2, x + rnorm(10000, sd = 1.5), ifelse(y > 0, x + rnorm(10000, sd = 2), x + rnorm(10000, sd = 3)))
 
 df <- df %>% 
   mutate(
@@ -221,37 +266,30 @@ compare_models("x_1980")
   </tr>
   <tr>
    <td style="text-align:left;"> x </td>
-   <td style="text-align:right;"> 0.37 </td>
+   <td style="text-align:right;"> 0.34 </td>
    <td style="text-align:left;"> &lt;.001 </td>
-   <td style="text-align:right;"> 0.36 </td>
+   <td style="text-align:right;"> 0.32 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> z </td>
-   <td style="text-align:right;"> 4.74 </td>
+   <td style="text-align:right;"> 4.80 </td>
    <td style="text-align:left;"> &lt;.001 </td>
-   <td style="text-align:right;"> 4.21 </td>
+   <td style="text-align:right;"> 4.28 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> x * z </td>
    <td style="text-align:right;"> -- </td>
    <td style="text-align:left;"> -- </td>
-   <td style="text-align:right;"> 0.30 </td>
+   <td style="text-align:right;"> 0.29 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
 </tbody>
 </table>
 
 ```r
-df %>% 
-  ggplot(aes(x = x_1980, y = y, col = factor(z))) +
-    geom_point(alpha = .02, size = 2.5) + 
-    geom_smooth(method = "lm", se = FALSE, size = 1.2) +
-    scale_color_viridis_d("Confounder \n(Measured well)") +
-    theme_minimal(base_size = 12) +
-    labs(x = "Mismeasured x (1980 device)",
-         y = "y (Measured well)")
+plot_models(x = x_1980, x_label = "Mismeasured x (1980 device)")
 ```
 
 <img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/x_1980-1.png" width="672" />
@@ -340,14 +378,7 @@ compare_models("x_2018")
 </table>
 
 ```r
-df %>% 
-  ggplot(aes(x = x_2018, y = y, col = factor(z))) +
-    geom_point(alpha = .02, size = 2.5) + 
-    geom_smooth(method = "lm", se = FALSE, size = 1.2) +
-    scale_color_viridis_d("Confounder \n(Measured well)") +
-    theme_minimal(base_size = 12) +
-    labs(x = "Mismeasured x (2018 device)",
-         y = "y (Measured well)")
+plot_models(x = x_2018, x_label = "Mismeasured x (1980 device)")
 ```
 
 <img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/x_2018-1.png" width="672" />
@@ -399,7 +430,6 @@ The DAGs for `z_m` look pretty similar to `x_m`.
 
 
 ```r
-library(patchwork) # to combine the plots
 ndme_z <- dagify(y ~ x + z, 
        x ~ z, 
        z_m ~ z + error) 
@@ -449,23 +479,23 @@ compare_models(confounder = "z_results_broken")
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 1.05 </td>
+   <td style="text-align:right;"> 1.02 </td>
    <td style="text-align:left;"> &lt;.001 </td>
-   <td style="text-align:right;"> 1.05 </td>
+   <td style="text-align:right;"> 1.02 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> x </td>
-   <td style="text-align:right;"> 2.20 </td>
+   <td style="text-align:right;"> 2.19 </td>
    <td style="text-align:left;"> &lt;.001 </td>
-   <td style="text-align:right;"> 2.23 </td>
+   <td style="text-align:right;"> 2.22 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> z </td>
-   <td style="text-align:right;"> 0.17 </td>
+   <td style="text-align:right;"> 0.23 </td>
    <td style="text-align:left;"> &lt;.001 </td>
-   <td style="text-align:right;"> 0.20 </td>
+   <td style="text-align:right;"> 0.26 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
   <tr>
@@ -479,14 +509,7 @@ compare_models(confounder = "z_results_broken")
 </table>
 
 ```r
-df %>% 
-  ggplot(aes(x = x, y = y, col = factor(z_results_broken))) +
-    geom_point(alpha = .02, size = 2.5) + 
-    geom_smooth(method = "lm", se = FALSE, size = 1.2) +
-    scale_color_viridis_d("Confounder \n(Z-ometer, broken)") +
-    theme_minimal(base_size = 12) +
-    labs(x = "x (Measured well)",
-         y = "y (Measured well)")
+plot_models(z = z_results_broken, z_label = "Confounder \n(Z-ometer, broken)")
 ```
 
 <img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/z_results-1.png" width="672" />
@@ -516,46 +539,45 @@ compare_models(confounder = "z_results")
 <tbody>
   <tr>
    <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> 1.04 </td>
+   <td style="text-align:right;"> 1.03 </td>
    <td style="text-align:left;"> &lt;.001 </td>
-   <td style="text-align:right;"> 1.05 </td>
+   <td style="text-align:right;"> 1.04 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> x </td>
    <td style="text-align:right;"> 2.21 </td>
    <td style="text-align:left;"> &lt;.001 </td>
-   <td style="text-align:right;"> 2.14 </td>
+   <td style="text-align:right;"> 2.13 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> z </td>
-   <td style="text-align:right;"> 0.19 </td>
+   <td style="text-align:right;"> 0.21 </td>
    <td style="text-align:left;"> &lt;.001 </td>
-   <td style="text-align:right;"> 0.15 </td>
+   <td style="text-align:right;"> 0.16 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> x * z </td>
    <td style="text-align:right;"> -- </td>
    <td style="text-align:left;"> -- </td>
-   <td style="text-align:right;"> 0.16 </td>
+   <td style="text-align:right;"> 0.19 </td>
    <td style="text-align:left;"> &lt;.001 </td>
   </tr>
 </tbody>
 </table>
 
 ```r
-df %>% 
-  ggplot(aes(x = x, y = y, col = factor(z_results))) +
-    geom_point(alpha = .02, size = 2.5) + 
-    geom_smooth(method = "lm", se = FALSE, size = 1.2) +
-    scale_color_viridis_d("Confounder \n(Z-ometer)") +
-    theme_minimal(base_size = 12) +
-    labs(x = "x (Measured well)",
-         y = "y (Measured well)")
+plot_models(z = z_results, z_label = "Confounder \n(Z-ometer, broken)")
 ```
 
 <img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/z_results_broken-1.png" width="672" />
 
 So, mismeasurement of both `x` and `z` can cause problems. Under most circumstances, of course, we are mismeasuring more than one variable (including `y`!). Moreover, the errors in the way those variables are measured may themselves be dependent. We need to, then, be very mindful of the structures of these bias and, if necessary, try to address them with bias analysis approaches. 
+
+If you want to learn about more about these methods, you may be interested in this great-looking resource from Maarten van Smeden:
+
+{{< tweet 1025990407757422592 >}}
+
+Thanks to him for providing it!
