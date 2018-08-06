@@ -38,7 +38,7 @@ confounder_triangle(x_y_associated = TRUE) %>%
   theme_dag()
 ```
 
-<img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/dag1-1.png" width="672" />
+<img src="/post/2018-08-04-when-interaction-is-not-interaction-confounding-and-measurement-error_files/figure-html/dag1-1.png" width="384" />
 
 Let's simulate some data. `x` and `y` are both continuous, and `z` is binary (0 or 1, with only about 10% of the population with `z=1`). We'll simulate 10,000 participants so random error is not a big issue.
 
@@ -120,7 +120,7 @@ plot_models <- function(x = x,
       geom_hex(aes(fill = factor(z)), col = "white", alpha = .7) +
       scale_color_manual(name = z_label, values = c("#56B4E9", "#EFA722", "#E36A25")) + 
       scale_fill_manual(name = z_label, values = c("#56B4E9", "#EFA722", "#E36A25")) + 
-      theme_minimal(base_size = 12) +
+      theme_minimal(base_size = 14) +
       theme(legend.position = "bottom",
             axis.title.x = element_blank()) +
       labs(y = "y (Measured well)") + 
@@ -133,9 +133,9 @@ plot_models <- function(x = x,
   p2 <- df %>% 
     ggplot(aes(x = !!x, y = y, col = factor(!!z))) +
       geom_hex(fill = "grey92", col = "white", alpha = .8) +
-      geom_smooth(method = "lm", se = FALSE, size = .9) + 
+      geom_smooth(method = "lm", se = FALSE, size = 1) + 
       scale_color_manual(name = z_label, values = c("#56B4E9", "#EFA722", "#E36A25")) + 
-      theme_minimal(base_size = 12) +
+      theme_minimal(base_size = 14) +
       theme(legend.position = "none",
               axis.title = element_blank()) +
       ylim(c(-10, 16))
@@ -143,7 +143,7 @@ plot_models <- function(x = x,
   if (crude) {
     p2 <- p2 + 
             geom_smooth(aes(group = 1, col = "Crude Estimate"), 
-                                    method = "lm", se = FALSE, size = .9) +
+                                    method = "lm", se = FALSE, size = 1) +
             theme(legend.position = "bottom")
     legend <- cowplot::get_legend(p2)
     p2 <- p2 + theme(legend.position = "none")
