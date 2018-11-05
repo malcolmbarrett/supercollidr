@@ -8,7 +8,7 @@ draft = false
 tags = ["R", "coding"]
 
 # Project summary to display on homepage.
-summary = "DAG analysis and visualization, working with confounders, visualization for meta-analyses"
+summary = "DAG analysis and visualization, visualization for meta-analyses, tools for causal inference, and more"
 
 # Optional image to display on homepage.
 image_preview = "rpackage_proj.png"
@@ -27,13 +27,16 @@ highlight = true
 [header]
 image = "rpackage_proj-wide.png"
 caption = ""
-
-# **Publication-quality tables**: `mable`, a package influenced by `ggplot2` and built on top of `knitr::kable()` and `kableExtra` to produce fluid, #easy-to-build tables for `RMarkdown`.
-# 
-# **Visualization for meta-analyses**: `ggmeta`, including `ggplot2` functionality for forest plots, funnel plots, and influence plots.
-# **Working with confounders**: `confoundr`, a package for detecting and visualizing confounding in observational studies.
 +++
 
 The source code for my R Packages can be found on [GitHub](//github.com/malcolmbarrett).
 
 **DAG analysis and visualization**: `ggdag`, a package for working with directed acyclic graphs in `ggplot2` and built on top of `dagitty`. `ggdag` focuses on working with selection bias, confounding, and selecting the right variables to adjust for in an analysis.
+
+**Visualization for meta-analyses**: `tidymeta`, including `ggplot2` functionality for forest plots, funnel plots, and influence plots.
+
+**Creating and visualizing sufficient-component cause models**: `causalpie`, which creates, analyzes, and plots causal pies.
+
+**Estimate Sample Size Based on Precision**: `precisely`, a package to estimate sample size based on precision rather than power. Power calculations are focused on whether or not an estimate will be statistically significant; calculations of precision are based on the same prinicples as power calculation but turn the focus to the width of the confidence interval.
+
+**Other Packages**: `mbmisc`, a package that contains functionsI use often and `ggplot2` themes. `koanr`, package containing data on important Zen texts. 

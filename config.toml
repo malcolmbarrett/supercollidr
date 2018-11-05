@@ -143,15 +143,15 @@ defaultContentLanguageInSubdir = false
   #   For more info on the highlighting options, see:
   #   https://sourcethemes.com/academic/post/writing-markdown-latex/#highlighting-options
   highlight = true
-  highlight_languages = []
-  # highlight_style = "github"
+  highlight_languages = ["r"]
+  highlight_style = "atelier-forest-light"
 
   # Enable native social sharing buttons?
   sharing = true
 
   # Link custom CSS and JS assets
   #   (relative to /static/css and /static/js respectively)
-  custom_css = []
+  custom_css = ["theme.css"]
   custom_js  = []
 
   # Publication types.

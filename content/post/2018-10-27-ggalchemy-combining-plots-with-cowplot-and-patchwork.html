@@ -1,0 +1,248 @@
+---
+title: 'ggalchemy: Combining plots with cowplot and patchwork'
+author: ''
+date: '2018-10-27'
+draft: true
+slug: ggalchemy-combining-plots-with-cowplot-and-patchwork
+categories: []
+tags:
+  - r
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.7
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>diabetes &lt;- read_csv(&quot;http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/diabetes.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   id = col_integer(),
+##   chol = col_integer(),
+##   stab.glu = col_integer(),
+##   hdl = col_integer(),
+##   ratio = col_double(),
+##   glyhb = col_double(),
+##   location = col_character(),
+##   age = col_integer(),
+##   gender = col_character(),
+##   height = col_integer(),
+##   weight = col_integer(),
+##   frame = col_character(),
+##   bp.1s = col_integer(),
+##   bp.1d = col_integer(),
+##   bp.2s = col_integer(),
+##   bp.2d = col_integer(),
+##   waist = col_integer(),
+##   hip = col_integer(),
+##   time.ppn = col_integer()
+## )</code></pre>
+<pre class="r"><code>diabetes &lt;- diabetes %&gt;% 
+  rename(sex = gender)
+
+diabetes</code></pre>
+<pre><code>## # A tibble: 403 x 19
+##       id  chol stab.glu   hdl ratio glyhb location   age sex   height
+##    &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
+##  1  1000   203       82    56  3.60  4.31 Bucking…    46 fema…     62
+##  2  1001   165       97    24  6.90  4.44 Bucking…    29 fema…     64
+##  3  1002   228       92    37  6.20  4.64 Bucking…    58 fema…     61
+##  4  1003    78       93    12  6.5   4.63 Bucking…    67 male      67
+##  5  1005   249       90    28  8.90  7.72 Bucking…    64 male      68
+##  6  1008   248       94    69  3.60  4.81 Bucking…    34 male      71
+##  7  1011   195       92    41  4.80  4.84 Bucking…    30 male      69
+##  8  1015   227       75    44  5.20  3.94 Bucking…    37 male      59
+##  9  1016   177       87    49  3.60  4.84 Bucking…    45 male      69
+## 10  1022   263       89    40  6.60  5.78 Bucking…    55 fema…     63
+## # ... with 393 more rows, and 9 more variables: weight &lt;int&gt;, frame &lt;chr&gt;,
+## #   bp.1s &lt;int&gt;, bp.1d &lt;int&gt;, bp.2s &lt;int&gt;, bp.2d &lt;int&gt;, waist &lt;int&gt;,
+## #   hip &lt;int&gt;, time.ppn &lt;int&gt;</code></pre>
+<div id="patchwork-compose-ggplots" class="section level1">
+<h1>patchwork: Compose ggplots</h1>
+<pre class="r"><code>library(patchwork)
+library(cowplot)</code></pre>
+<pre><code>## 
+## 
+## *******************************************************</code></pre>
+<pre><code>## Note: cowplot does not change the default ggplot2 theme</code></pre>
+<pre><code>## anymore. To recover the previous behavior, execute:
+##   theme_set(theme_cowplot())</code></pre>
+<pre><code>## *******************************************************</code></pre>
+<div id="combine-plots-horizontally" class="section level2">
+<h2>combine plots horizontally: <code>+</code></h2>
+</div>
+<div id="combine-plots-vertically" class="section level2">
+<h2>combine plots vertically: <code>/</code></h2>
+</div>
+<div id="group-plots" class="section level2">
+<h2>group plots: <code>()</code></h2>
+</div>
+<div id="control-layout-plot_layout" class="section level2">
+<h2>control layout: <code>plot_layout()</code></h2>
+</div>
+<div id="assess-the-relationship-between-sex-a1c-waist-to-hip-ratio-and-body-frame" class="section level2">
+<h2>Assess the relationship between sex, a1c, waist to hip ratio, and body frame</h2>
+<pre class="r"><code>label_frames &lt;- function(lbl) paste(lbl, &quot;\nframe&quot;)
+
+theme_multiplot &lt;- function(base_size = 14, ...) {
+  theme_minimal(base_size = base_size, ...) %+replace%
+    theme(
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      legend.position = &quot;none&quot;
+    )
+}</code></pre>
+</div>
+<div id="density-plot" class="section level2">
+<h2>density plot</h2>
+<pre class="r"><code>plot_a &lt;- diabetes %&gt;% 
+  ggplot(aes(waist/hip, fill = sex)) + 
+    geom_density(
+      col = &quot;white&quot;, 
+      alpha = .7, 
+      size = .75
+     ) + 
+    theme_multiplot() +
+    scale_fill_manual(values = c(&quot;#009E73&quot;, &quot;#0072B2&quot;)) + 
+    annotate(
+       &quot;text&quot;, 
+       x = c(.75, .98), 
+       y = c(5, 5.70), 
+       label = c(&quot;female&quot;, &quot;male&quot;), 
+       color = c(&quot;#009E73&quot;, &quot;#0072B2&quot;),
+       size = 5
+      ) + 
+    labs(tag = &quot;A&quot;) 
+
+plot_a</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="/post/2018-10-27-ggalchemy-combining-plots-with-cowplot-and-patchwork_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="boxplot" class="section level2">
+<h2>boxplot</h2>
+<pre class="r"><code>plot_b &lt;- diabetes %&gt;% 
+  drop_na(frame) %&gt;% 
+  ggplot(aes(fct_rev(frame), waist/hip, fill = sex, col = sex)) + 
+    geom_boxplot(
+      outlier.color = NA, 
+      alpha = .8, 
+      width = .5
+     ) +
+    theme_multiplot() %+replace%
+    theme(axis.title.x = element_blank()) + 
+    scale_x_discrete(labels = label_frames) + 
+    scale_color_manual(values = c(&quot;#009E73&quot;, &quot;#0072B2&quot;)) + 
+    scale_fill_manual(values = c(&quot;#009E7370&quot;, &quot;#0072B270&quot;)) + 
+    labs(tag = &quot;B&quot;)
+
+plot_b</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="/post/2018-10-27-ggalchemy-combining-plots-with-cowplot-and-patchwork_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="scatter-plot-with-regression-lines" class="section level2">
+<h2>scatter plot with regression lines</h2>
+<pre class="r"><code>plot_c &lt;- diabetes %&gt;% 
+  drop_na(frame) %&gt;% 
+  ggplot(aes(waist/hip, glyhb,  col = sex)) +
+    geom_point(
+      shape = 21, 
+      col = &quot;white&quot;, 
+      fill = &quot;grey80&quot;, 
+      size = 2.5
+     ) + 
+    geom_smooth(
+      method = &quot;lm&quot;, 
+      se = FALSE, 
+      size = 1.3
+    ) + 
+    theme_minimal(base_size = 14) +
+    theme(
+      legend.position = c(1, 1.25),
+      legend.justification = c(1, 0),
+      legend.direction = &quot;horizontal&quot;,
+      panel.grid.minor.x = element_blank(),
+      panel.grid.minor.y = element_blank()
+     ) + 
+    facet_wrap(~fct_rev(frame), labeller = as_labeller(label_frames)) +
+    labs(tag = &quot;C&quot;, y = &quot;hemoglobin a1c&quot;) + 
+    scale_y_log10(breaks = c(3.5, 5.0, 7.0, 10.0, 14.0)) +
+    scale_color_manual(name = &quot;&quot;, values = c(&quot;#009E73FF&quot;, &quot;#0072B2FF&quot;)) +
+    guides(color = guide_legend(override.aes = list(size = 5)))</code></pre>
+<pre><code>## Warning: Removed 14 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 14 rows containing missing values (geom_point).</code></pre>
+<p><img src="/post/2018-10-27-ggalchemy-combining-plots-with-cowplot-and-patchwork_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>(plot_a + plot_b) / plot_c</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_density).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 14 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 14 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning in (function (..., na.rm = FALSE) : an argument will be
+## fractionally recycled</code></pre>
+<p><img src="/post/2018-10-27-ggalchemy-combining-plots-with-cowplot-and-patchwork_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="combining-patchwork-and-cowplot" class="section level2">
+<h2>Combining patchwork and cowplot</h2>
+<pre class="r"><code>legend &lt;- ggdraw() + 
+  get_legend(plot_c + theme(legend.position = &quot;bottom&quot;))</code></pre>
+<pre><code>## Warning: Removed 14 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 14 rows containing missing values (geom_point).</code></pre>
+<pre class="r"><code>  (plot_a + plot_b) / 
+  (plot_c + theme(legend.position = &quot;none&quot;)) / 
+  legend + 
+  plot_layout(heights = c(10, 10, 1)) +
+  plot_annotation(
+    &quot;The relationship between waist/hip ratio in males and females by
+      frame size&quot;, 
+    theme = theme(plot.title = element_text(size = 16, face = &quot;bold&quot;))
+  )</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_density).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre><code>## Warning: Removed 14 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 14 rows containing missing values (geom_point).</code></pre>
+<p><img src="/post/2018-10-27-ggalchemy-combining-plots-with-cowplot-and-patchwork_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>side_plot &lt;- plot_a + 
+  theme(
+    axis.line = element_blank(), 
+    axis.text = element_blank(), 
+    axis.title = element_blank(), 
+    axis.ticks = element_blank(),
+    panel.grid.major = element_blank()
+   ) + 
+  labs(tag = &quot;&quot;) + 
+  coord_flip()
+
+margin_plot &lt;- ggdraw(
+  insert_yaxis_grob(
+    plot_b + labs(tag = &quot;A&quot;), 
+    side_plot, 
+    position = &quot;right&quot;
+  )
+)</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_density).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
+<pre class="r"><code>plot_grid(margin_plot, plot_c + labs(tag = &quot;B&quot;), ncol = 1)</code></pre>
+<pre><code>## Warning: Removed 14 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 14 rows containing missing values (geom_point).</code></pre>
+<p><img src="/post/2018-10-27-ggalchemy-combining-plots-with-cowplot-and-patchwork_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>ggdraw(
+  insert_yaxis_grob(
+    plot_b + labs(tag = &quot;&quot;), 
+    side_plot, 
+    position = &quot;right&quot;
+  )
+)</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_density).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="/post/2018-10-27-ggalchemy-combining-plots-with-cowplot-and-patchwork_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+</div>

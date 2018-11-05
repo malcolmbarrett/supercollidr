@@ -1,0 +1,221 @@
+---
+title: Highlighting with Color in ggplot2 and gghighlight
+author: ''
+date: '2018-10-26'
+draft: true
+slug: highlighting-with-color-in-ggplot2-and-gghighlight
+categories: []
+tags:
+  - r
+header:
+  caption: ''
+  image: ''
+---
+
+
+
+<div id="include-prev-contintent-plot" class="section level2">
+<h2>INCLUDE PREV CONTINTENT PLOT</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.7
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(gapminder)
+
+africa &lt;- gapminder %&gt;% 
+  filter(continent == &quot;Africa&quot;)
+
+africa</code></pre>
+<pre><code>## # A tibble: 624 x 6
+##    country continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Algeria Africa     1952    43.1  9279525     2449.
+##  2 Algeria Africa     1957    45.7 10270856     3014.
+##  3 Algeria Africa     1962    48.3 11000948     2551.
+##  4 Algeria Africa     1967    51.4 12760499     3247.
+##  5 Algeria Africa     1972    54.5 14760787     4183.
+##  6 Algeria Africa     1977    58.0 17152804     4910.
+##  7 Algeria Africa     1982    61.4 20033753     5745.
+##  8 Algeria Africa     1987    65.8 23254956     5681.
+##  9 Algeria Africa     1992    67.7 26298373     5023.
+## 10 Algeria Africa     1997    69.2 29072015     4797.
+## # ... with 614 more rows</code></pre>
+<pre class="r"><code>line_plot_extras &lt;- function(legend.position = &quot;none&quot;, 
+                             values = continent_colors) {
+  list(
+    theme_minimal(base_size = 14),
+    theme(
+      legend.position = legend.position,
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.minor.y = element_blank()
+     ),
+    scale_color_manual(values = values),
+    labs(y = &quot;life expectancy&quot;)
+  )
+}</code></pre>
+<pre class="r"><code>africa %&gt;% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(size = 1.2, alpha = .9) +
+    line_plot_extras(values = country_colors)</code></pre>
+<p><img src="/post/2018-10-26-highlighting-with-color-in-ggplot2-and-gghighlight_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>selected_countries &lt;-
+  c(&quot;Reunion&quot;, &quot;Mauritania&quot;, &quot;Niger&quot;, &quot;Rwanda&quot;, &quot;Sierra Leone&quot;)
+
+country_labels &lt;- gapminder %&gt;% 
+  filter(continent == &quot;Africa&quot;) %&gt;% 
+  group_by(country) %&gt;%
+  summarize(
+    x = max(year), 
+    y = max(lifeExp)
+   ) %&gt;% 
+  filter(
+    country %in% selected_countries
+   )
+
+modified_colors &lt;- country_colors 
+
+modified_colors[-29] &lt;- &quot;grey90&quot; 
+modified_colors[c(19, 32, 38, 48)] &lt;- &quot;grey75&quot; </code></pre>
+<pre class="r"><code>library(cowplot)</code></pre>
+<pre><code>## 
+## 
+## *******************************************************</code></pre>
+<pre><code>## Note: cowplot does not change the default ggplot2 theme</code></pre>
+<pre><code>## anymore. To recover the previous behavior, execute:
+##   theme_set(theme_cowplot())</code></pre>
+<pre><code>## *******************************************************</code></pre>
+<pre class="r"><code>filter_data &lt;- function(...) {
+  function(x)  filter(x, ...)
+}
+
+p &lt;- africa %&gt;% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(
+      data = filter_data(country != selected_countries[4]), 
+      size = 1.2, 
+      alpha = .9
+     ) +
+    geom_line(
+      data = filter_data(country %in% selected_countries[-4]), 
+      size = 1.2, 
+      alpha = .9
+     ) +
+    geom_line(
+      data = filter_data(country == selected_countries[4]), 
+      size = 1.4
+    ) +
+  line_plot_extras(values = modified_colors)
+
+direct_labels_axis &lt;- axis_canvas(p, axis = &quot;y&quot;) +
+  geom_text(
+    data = country_labels, 
+    aes(x, y, label = country),     
+    x = 0, 
+    hjust = 0, 
+    color = c(rep(&quot;grey75&quot;, 3), &quot;#E58C23&quot;, &quot;grey75&quot;), 
+    size = 5
+  )
+
+p_direct_labels &lt;- insert_yaxis_grob(p, direct_labels_axis)
+
+ggdraw(p_direct_labels)</code></pre>
+<p><img src="/post/2018-10-26-highlighting-with-color-in-ggplot2-and-gghighlight_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>modified_colors[-29] &lt;- &quot;grey90&quot; 
+
+p &lt;- africa %&gt;% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(
+      data = filter_data(country != selected_countries[4]), 
+      size = 1.2, 
+      alpha = .9
+     ) +
+    geom_line(
+      data = filter_data(country == selected_countries[4]), 
+      size = 1.4
+    ) +
+  line_plot_extras(values = modified_colors)
+
+direct_labels_axis &lt;- axis_canvas(p, axis = &quot;y&quot;) +
+  geom_text(
+    data = country_labels, 
+    aes(x, y, label = country),     
+    x = 0, 
+    hjust = 0, 
+    color = c(rep(&quot;white&quot;, 3), &quot;#E58C23&quot;, &quot;white&quot;), 
+    size = 5
+  )
+
+p_direct_labels &lt;- insert_yaxis_grob(p, direct_labels_axis)
+
+ggdraw(p_direct_labels)</code></pre>
+<p><img src="/post/2018-10-26-highlighting-with-color-in-ggplot2-and-gghighlight_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>library(gghighlight)</code></pre>
+<pre class="r"><code>africa %&gt;% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(size = 1.2, alpha = .9) + 
+    gghighlight(max(lifeExp) &lt; 50, label_key = country) +
+    line_plot_extras(values = country_colors)</code></pre>
+<p><img src="/post/2018-10-26-highlighting-with-color-in-ggplot2-and-gghighlight_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Which countries had higher life expectancy in 1992 than 2007?</p>
+<pre class="r"><code>africa &lt;- africa %&gt;% 
+  select(country, year, lifeExp) %&gt;% 
+  spread(year, lifeExp) %&gt;% 
+  mutate(le_dropped = `1992` &gt; `2007`) %&gt;% 
+  select(country, le_dropped) %&gt;% 
+  left_join(africa, by = &quot;country&quot;)
+
+africa</code></pre>
+<pre><code>## # A tibble: 624 x 7
+##    country le_dropped continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;   &lt;lgl&gt;      &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Algeria FALSE      Africa     1952    43.1  9279525     2449.
+##  2 Algeria FALSE      Africa     1957    45.7 10270856     3014.
+##  3 Algeria FALSE      Africa     1962    48.3 11000948     2551.
+##  4 Algeria FALSE      Africa     1967    51.4 12760499     3247.
+##  5 Algeria FALSE      Africa     1972    54.5 14760787     4183.
+##  6 Algeria FALSE      Africa     1977    58.0 17152804     4910.
+##  7 Algeria FALSE      Africa     1982    61.4 20033753     5745.
+##  8 Algeria FALSE      Africa     1987    65.8 23254956     5681.
+##  9 Algeria FALSE      Africa     1992    67.7 26298373     5023.
+## 10 Algeria FALSE      Africa     1997    69.2 29072015     4797.
+## # ... with 614 more rows</code></pre>
+<pre class="r"><code>africa %&gt;% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(
+      size = 1.2, 
+      alpha = .9
+     ) + 
+    gghighlight( 
+      le_dropped, 
+      use_group_by = FALSE, 
+      label_key = country 
+    ) + 
+    line_plot_extras(values = country_colors)</code></pre>
+<p><img src="/post/2018-10-26-highlighting-with-color-in-ggplot2-and-gghighlight_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>africa %&gt;% 
+  mutate(country = as.character(country),
+         country = str_replace(country, &quot;Central African Republic&quot;, &quot;Central African\nRepublic&quot;)) %&gt;% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(
+      size = 1.2, 
+      alpha = .9, 
+      col = &quot;#E58C23&quot;
+    ) + 
+    gghighlight(
+      le_dropped, 
+      use_group_by = FALSE, 
+      label_key = labels, 
+      unhighlighted_colour = &quot;grey90&quot;
+     ) +
+    line_plot_extras(values = country_colors) +
+    xlim(1950, 2015) + 
+    scale_y_continuous(breaks = c(30, 50, 70)) +
+    facet_wrap(~country) </code></pre>
+<p><img src="/post/2018-10-26-highlighting-with-color-in-ggplot2-and-gghighlight_files/figure-html/unnamed-chunk-11-1.png" width="768" /></p>
+</div>

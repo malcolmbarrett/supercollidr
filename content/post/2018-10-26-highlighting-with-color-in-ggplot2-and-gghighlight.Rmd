@@ -1,0 +1,205 @@
+---
+title: Highlighting with Color in ggplot2 and gghighlight
+author: ''
+date: '2018-10-26'
+draft: true
+slug: highlighting-with-color-in-ggplot2-and-gghighlight
+categories: []
+tags:
+  - r
+header:
+  caption: ''
+  image: ''
+---
+
+## INCLUDE PREV CONTINTENT PLOT
+
+```{r}
+library(tidyverse)
+library(gapminder)
+
+africa <- gapminder %>% 
+  filter(continent == "Africa")
+
+africa
+```
+
+```{r}
+line_plot_extras <- function(legend.position = "none", 
+                             values = continent_colors) {
+  list(
+    theme_minimal(base_size = 14),
+    theme(
+      legend.position = legend.position,
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.minor.y = element_blank()
+     ),
+    scale_color_manual(values = values),
+    labs(y = "life expectancy")
+  )
+}
+```
+
+```{r}
+africa %>% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(size = 1.2, alpha = .9) +
+    line_plot_extras(values = country_colors)
+```
+
+
+```{r}
+selected_countries <-
+  c("Reunion", "Mauritania", "Niger", "Rwanda", "Sierra Leone")
+
+country_labels <- gapminder %>% 
+  filter(continent == "Africa") %>% 
+  group_by(country) %>%
+  summarize(
+    x = max(year), 
+    y = max(lifeExp)
+   ) %>% 
+  filter(
+    country %in% selected_countries
+   )
+
+modified_colors <- country_colors 
+
+modified_colors[-29] <- "grey90" 
+modified_colors[c(19, 32, 38, 48)] <- "grey75" 
+```
+
+```{r}
+library(cowplot)
+
+filter_data <- function(...) {
+  function(x)  filter(x, ...)
+}
+
+p <- africa %>% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(
+      data = filter_data(country != selected_countries[4]), 
+      size = 1.2, 
+      alpha = .9
+     ) +
+    geom_line(
+      data = filter_data(country %in% selected_countries[-4]), 
+      size = 1.2, 
+      alpha = .9
+     ) +
+    geom_line(
+      data = filter_data(country == selected_countries[4]), 
+      size = 1.4
+    ) +
+  line_plot_extras(values = modified_colors)
+
+direct_labels_axis <- axis_canvas(p, axis = "y") +
+  geom_text(
+    data = country_labels, 
+    aes(x, y, label = country),     
+    x = 0, 
+    hjust = 0, 
+    color = c(rep("grey75", 3), "#E58C23", "grey75"), 
+    size = 5
+  )
+
+p_direct_labels <- insert_yaxis_grob(p, direct_labels_axis)
+
+ggdraw(p_direct_labels)
+```
+
+
+```{r}
+modified_colors[-29] <- "grey90" 
+
+p <- africa %>% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(
+      data = filter_data(country != selected_countries[4]), 
+      size = 1.2, 
+      alpha = .9
+     ) +
+    geom_line(
+      data = filter_data(country == selected_countries[4]), 
+      size = 1.4
+    ) +
+  line_plot_extras(values = modified_colors)
+
+direct_labels_axis <- axis_canvas(p, axis = "y") +
+  geom_text(
+    data = country_labels, 
+    aes(x, y, label = country),     
+    x = 0, 
+    hjust = 0, 
+    color = c(rep("white", 3), "#E58C23", "white"), 
+    size = 5
+  )
+
+p_direct_labels <- insert_yaxis_grob(p, direct_labels_axis)
+
+ggdraw(p_direct_labels)
+```
+
+```{r}
+library(gghighlight)
+```
+
+```{r, fig.height=4}
+africa %>% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(size = 1.2, alpha = .9) + 
+    gghighlight(max(lifeExp) < 50, label_key = country) +
+    line_plot_extras(values = country_colors)
+```
+
+Which countries had higher life expectancy in 1992 than 2007?
+
+```{r}
+africa <- africa %>% 
+  select(country, year, lifeExp) %>% 
+  spread(year, lifeExp) %>% 
+  mutate(le_dropped = `1992` > `2007`) %>% 
+  select(country, le_dropped) %>% 
+  left_join(africa, by = "country")
+
+africa
+```
+
+```{r}
+africa %>% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(
+      size = 1.2, 
+      alpha = .9
+     ) + 
+    gghighlight( 
+      le_dropped, 
+      use_group_by = FALSE, 
+      label_key = country 
+    ) + 
+    line_plot_extras(values = country_colors)
+```
+
+```{r, fig.width=8, fig.height=6.2}
+africa %>% 
+  mutate(country = as.character(country),
+         country = str_replace(country, "Central African Republic", "Central African\nRepublic")) %>% 
+  ggplot(aes(year, lifeExp, col = country)) +
+    geom_line(
+      size = 1.2, 
+      alpha = .9, 
+      col = "#E58C23"
+    ) + 
+    gghighlight(
+      le_dropped, 
+      use_group_by = FALSE, 
+      label_key = labels, 
+      unhighlighted_colour = "grey90"
+     ) +
+    line_plot_extras(values = country_colors) +
+    xlim(1950, 2015) + 
+    scale_y_continuous(breaks = c(30, 50, 70)) +
+    facet_wrap(~country) 
+```
