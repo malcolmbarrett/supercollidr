@@ -22,7 +22,7 @@ library(here)
 * It's robust to other ways people open and run your code
 * Like its base R cousin, `file.path()`, it writes paths safely across operating systems
 
-Like a lot of people, when I learned R, I was taught to put `setwd()` and `rm(list = ls())` at the beginning of scripts. Geting rid of any leftovers in the environment and setting the working directory so I can use relative paths made sense to me. It seemed like good practice! But `setwd()` and `rm(list = ls())` are problematic. `rm()` doesn't actually give you a clean R session; it doesn't, for instance, detach packages. `setwd()`, meanwhile, is completely dependent on the way you organize your files. If you set a working directory that is an absolute path on your computer, it will only run for someone else if they rewrite the absolute path to where it is on *their* computer. 
+Like a lot of people, when I learned R, I was taught to put `setwd()` and `rm(list = ls())` at the beginning of scripts. Getting rid of any leftovers in the environment and setting the working directory so I can use relative paths made sense to me. It seemed like good practice! But `setwd()` and `rm(list = ls())` are problematic. `rm()` doesn't actually give you a clean R session; it doesn't, for instance, detach packages. `setwd()`, meanwhile, is completely dependent on the way you organize your files. If you set a working directory that is an absolute path on your computer, it will only run for someone else if they rewrite the absolute path to where it is on *their* computer. 
 
 Last year, Jenny Bryan shared some slides from a talk on this subject. I'll let them speak for themselves:
 
@@ -43,7 +43,7 @@ If you haven't read [her write-up on what the issues and solutions are](https://
 - Use Rstudio projects. They set up a local working directory in a fresh R session, which makes it much easier for someone else to open
 - Use `here()` from the `here` package to write file paths
 
-[Setting up a project is easy](https://www.youtube.com/watch?v=etkSsF6r2iU)[^1]. Projects can handle both of the problems `setwd()` and `rm(list = ls())` are trying to solve for you. You can [set it so you have a fresh R session when opening a project](https://community.rstudio.com/t/first-line-of-every-r-script/799/11) (either locally in the project or globally in Rstudio). Additionaly, when you're in a project, you don't need to set your working directory. The working directory is just wherever the project is.
+[Setting up a project is easy](https://www.youtube.com/watch?v=etkSsF6r2iU)[^1]. Projects can handle both of the problems `setwd()` and `rm(list = ls())` are trying to solve for you. You can [set it so you have a fresh R session when opening a project](https://community.rstudio.com/t/first-line-of-every-r-script/799/11) (either locally in the project or globally in Rstudio). Additionally, when you're in a project, you don't need to set your working directory. The working directory is just wherever the project is.
 
 So, it may not be obvious: what's the benefit of using the `here` package if projects solve both those problems? 
 
@@ -97,7 +97,7 @@ file.path("figure", "figure.png")
 ## [1] "figure/figure.png"
 ```
 
-But `here` has some added benefits: it makes it easier to manage subdirectories, and it makes your code more robust outside of projects. [As an example, I've set up an R project on my GitHub](https://github.com/malcolmbarrett/here_here) that has a file directory like this:
+But `here` has some added benefits: it makes it easier to manage sub-directories, and it makes your code more robust outside of projects. [As an example, I've set up an R project on my GitHub](https://github.com/malcolmbarrett/here_here) that has a file directory like this:
 
 ```{r projdir, eval=FALSE}
 here_here

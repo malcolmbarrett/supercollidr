@@ -19,7 +19,7 @@ header:
 <li>It’s robust to other ways people open and run your code</li>
 <li>Like its base R cousin, <code>file.path()</code>, it writes paths safely across operating systems</li>
 </ul>
-<p>Like a lot of people, when I learned R, I was taught to put <code>setwd()</code> and <code>rm(list = ls())</code> at the beginning of scripts. Geting rid of any leftovers in the environment and setting the working directory so I can use relative paths made sense to me. It seemed like good practice! But <code>setwd()</code> and <code>rm(list = ls())</code> are problematic. <code>rm()</code> doesn’t actually give you a clean R session; it doesn’t, for instance, detach packages. <code>setwd()</code>, meanwhile, is completely dependent on the way you organize your files. If you set a working directory that is an absolute path on your computer, it will only run for someone else if they rewrite the absolute path to where it is on <em>their</em> computer.</p>
+<p>Like a lot of people, when I learned R, I was taught to put <code>setwd()</code> and <code>rm(list = ls())</code> at the beginning of scripts. Getting rid of any leftovers in the environment and setting the working directory so I can use relative paths made sense to me. It seemed like good practice! But <code>setwd()</code> and <code>rm(list = ls())</code> are problematic. <code>rm()</code> doesn’t actually give you a clean R session; it doesn’t, for instance, detach packages. <code>setwd()</code>, meanwhile, is completely dependent on the way you organize your files. If you set a working directory that is an absolute path on your computer, it will only run for someone else if they rewrite the absolute path to where it is on <em>their</em> computer.</p>
 <p>Last year, Jenny Bryan shared some slides from a talk on this subject. I’ll let them speak for themselves:</p>
 <blockquote>
 <p><em>If the first line of your R script is</em></p>
@@ -36,7 +36,7 @@ header:
 <li>Use Rstudio projects. They set up a local working directory in a fresh R session, which makes it much easier for someone else to open</li>
 <li>Use <code>here()</code> from the <code>here</code> package to write file paths</li>
 </ul>
-<p><a href="https://www.youtube.com/watch?v=etkSsF6r2iU">Setting up a project is easy</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Projects can handle both of the problems <code>setwd()</code> and <code>rm(list = ls())</code> are trying to solve for you. You can <a href="https://community.rstudio.com/t/first-line-of-every-r-script/799/11">set it so you have a fresh R session when opening a project</a> (either locally in the project or globally in Rstudio). Additionaly, when you’re in a project, you don’t need to set your working directory. The working directory is just wherever the project is.</p>
+<p><a href="https://www.youtube.com/watch?v=etkSsF6r2iU">Setting up a project is easy</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Projects can handle both of the problems <code>setwd()</code> and <code>rm(list = ls())</code> are trying to solve for you. You can <a href="https://community.rstudio.com/t/first-line-of-every-r-script/799/11">set it so you have a fresh R session when opening a project</a> (either locally in the project or globally in Rstudio). Additionally, when you’re in a project, you don’t need to set your working directory. The working directory is just wherever the project is.</p>
 <p>So, it may not be obvious: what’s the benefit of using the <code>here</code> package if projects solve both those problems?</p>
 <p><img src="https://media.giphy.com/media/YByMQsx1NrmPKLuYqF/giphy.gif" /></p>
 </div>
@@ -59,7 +59,7 @@ here()</code></pre>
 <p>I already touched on one reason to avoid writing paths yourself: the rules aren’t necessarily the same between operating systems. You could, of course, use <code>file.path()</code> from base R, which safely creates a relative path for you.</p>
 <pre class="r"><code>file.path(&quot;figure&quot;, &quot;figure.png&quot;)</code></pre>
 <pre class="r"><code>## [1] &quot;figure/figure.png&quot;</code></pre>
-<p>But <code>here</code> has some added benefits: it makes it easier to manage subdirectories, and it makes your code more robust outside of projects. <a href="https://github.com/malcolmbarrett/here_here">As an example, I’ve set up an R project on my GitHub</a> that has a file directory like this:</p>
+<p>But <code>here</code> has some added benefits: it makes it easier to manage sub-directories, and it makes your code more robust outside of projects. <a href="https://github.com/malcolmbarrett/here_here">As an example, I’ve set up an R project on my GitHub</a> that has a file directory like this:</p>
 <pre class="r"><code>here_here
 |--data
     |--mtcars.csv
