@@ -47,7 +47,7 @@ If you haven't read [her write-up on what the issues and solutions are](https://
 
 So, it may not be obvious: what's the benefit of using the `here` package if projects solve both those problems? 
 
-![](https://media.giphy.com/media/fH36AKH4bygKs5P0ed/giphy.gif)
+![](https://media.giphy.com/media/YByMQsx1NrmPKLuYqF/giphy.gif)
 
 # What's under here?
 
