@@ -9,3 +9,8 @@ pre, code {
     color: #0072B2;
     font-size: 1rem;
 }
+
+.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 0;
+}
