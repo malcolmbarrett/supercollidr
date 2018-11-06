@@ -22,6 +22,5 @@ I can help with:
 - Study design
 - Analysis plans
 - Coding and modeling
-- Spatial analysis
 - Instruction in R and other statistical tools
 - Data visualization

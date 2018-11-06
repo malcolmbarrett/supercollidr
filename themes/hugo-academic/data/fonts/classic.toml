@@ -2,12 +2,12 @@
 name = "Classic"
 
 # Optional Google font URL
-google_fonts = "Lato:400,700|Merriweather|Roboto+Mono"
+google_fonts = "Fira+Sans|IBM+Plex+Sans:300,400,500|Roboto+Mono"
 
 # Font families
-heading_font = "Lato"
-body_font = "Merriweather"
-nav_font = "Lato"
+heading_font = "IBM Plex Sans"
+body_font = "Fira Sans"
+nav_font = "IBM Plex Sans"
 mono_font = "Roboto Mono"
 
 # Font size

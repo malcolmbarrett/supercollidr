@@ -5,14 +5,14 @@ name = "Forest"
 light = true
 
 # Primary
-primary = "#4caf50"
-primary_light = "#80e27e"
-primary_dark = "#087f23"
+primary = "#56B4E9"
+primary_light = "#6CC4FA"
+primary_dark = "#0072B2"
 
 # Menu
-menu_primary = "#4caf50"
+menu_primary = "#56B4E9"
 menu_text = "#fff"
-menu_text_active = "#1b5e20"
+menu_text_active = "#0072B2"
 menu_title = "#fff"
 
 # Home sections

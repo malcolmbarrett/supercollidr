@@ -1,5 +1,11 @@
 pre, code {
+    font-size: 65%;
     font-family: 'Roboto Mono', monospace;
     background-color: #f1efee;
     color: #68615e;
+}
+
+.pub-list-item .pub-publication {
+    color: #0072B2;
+    font-size: 1rem;
 }
