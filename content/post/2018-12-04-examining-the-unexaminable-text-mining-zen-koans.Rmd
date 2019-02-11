@@ -1,0 +1,122 @@
+---
+title: 'Examining the Unexaminable: Text Mining Zen Koans'
+author: ''
+date: '2018-12-04'
+slug: examining-the-unexaminable
+categories: []
+tags: []
+header:
+  caption: ''
+  image: ''
+---
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(koanr)
+
+collect_koans() %>%
+  filter(type == "main_case") %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words) %>%
+  count(word, sort = TRUE) %>%
+  head(20) %>%
+  mutate(word = fct_rev(fct_inorder(word))) %>%
+  ggplot(aes(word, n)) +
+    geom_col(fill = mbmisc::palette_malco(4)) +
+    mbmisc::theme_valco() +
+    coord_flip()
+```
+
+```{r}
+collect_koans() %>%
+  filter(type == "main_case") %>%
+  unnest_tokens(word, text) %>%
+  mutate(word = word %>% str_replace_all("ô", "o") %>% str_replace_all("û", "u")) %>% 
+  anti_join(stop_words) %>%
+  group_by(collection) %>% 
+  count(word, sort = TRUE) %>%
+  ungroup() %>% 
+  bind_tf_idf(word, collection, n) %>% 
+  arrange(desc(tf_idf)) %>% 
+  mutate(word = factor(word, levels = rev(unique(word)))) %>% 
+  group_by(collection) %>% 
+  top_n(20) %>%
+  ungroup() %>%
+  ggplot(aes(word, tf_idf)) +
+    geom_col(fill = mbmisc::palette_malco(4)) +
+    mbmisc::theme_valco() +
+    coord_flip() +
+   facet_wrap(~collection, scales = "free")
+```
+
+```{r}
+collect_koans() %>%
+  filter(type == "main_case") %>% 
+  mutate(text = text %>% str_replace_all("ô", "o") %>% str_replace_all("û", "u")) %>% 
+  group_by(collection) %>% 
+  mutate(has_joshu = str_detect(text, "Joshu")) %>% 
+  summarise(Joshu = sum(has_joshu))
+
+collect_koans() %>%
+  filter(type == "main_case") %>% 
+  mutate(text = text %>% str_replace_all("ô", "o") %>% str_replace_all("û", "u")) %>% 
+  group_by(collection) %>% 
+  mutate(has_yunmen = str_detect(text, "Unmon|Umon|Un-mon|Yunmen")) %>% 
+  summarise(Yunmen = sum(has_yunmen))
+
+collect_koans() %>%
+  filter(type == "main_case") %>% 
+  mutate(text = text %>% str_replace_all("ô", "o") %>% str_replace_all("û", "u")) %>% 
+  group_by(collection) %>% 
+  mutate(has_bodhidharma = str_detect(text, "Bodhidharma|Bodaidaruma")) %>% 
+  summarise(Bodhidharma = sum(has_bodhidharma))
+
+collect_koans() %>%
+  filter(type == "main_case") %>% 
+  mutate(text = text %>% str_replace_all("ô", "o") %>% str_replace_all("û", "u")) %>% 
+  filter(str_detect(text, "Unmon|Umon|Un-mon|Yunmen")) %>% 
+  sample_n(1) %>% 
+  pull(text)
+```
+
+```{r}
+collect_koans() %>%
+  filter(type == "main_case") %>% 
+  unnest_tokens(bigram, text, token = "ngrams", n = 2) %>%
+  count(bigram) %>% 
+  separate(bigram, c("word1", "word2"), sep = " ") %>% 
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word,
+         word1 == "master") %>% 
+  arrange(desc(n))
+
+collect_koans() %>%
+  filter(type == "main_case") %>% 
+  mutate(text = text %>% str_replace_all("ô", "o") %>% str_replace_all("û", "u")) %>% 
+  filter(str_detect(text, "Master Ba")) %>% 
+  sample_n(1) %>% 
+  pull(text)
+```
+
+```{r}
+collect_koans() %>%
+  filter(type == "main_case") %>%
+  unnest_tokens(bigram, text, token = "ngrams", n = 2) %>%
+  mutate(bigram = bigram %>% str_replace_all("ô", "o") %>% str_replace_all("û", "u")) %>% 
+  group_by(collection) %>% 
+  count(bigram, sort = TRUE) %>%
+  ungroup() %>% 
+  bind_tf_idf(bigram, collection, n) %>% 
+  arrange(desc(tf_idf)) %>% 
+  mutate(bigram = factor(bigram, levels = rev(unique(bigram)))) %>% 
+  group_by(collection) %>% 
+  top_n(20) %>%
+  ungroup() %>%
+  ggplot(aes(bigram, tf_idf)) +
+    geom_col(fill = mbmisc::palette_malco(4)) +
+    mbmisc::theme_valco() +
+    coord_flip() +
+   facet_wrap(~collection, scales = "free")
+```
+

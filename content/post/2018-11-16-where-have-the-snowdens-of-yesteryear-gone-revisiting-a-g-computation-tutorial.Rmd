@@ -1,0 +1,238 @@
+---
+title: Where have the Snowdens of yesteryear gone? Revisiting a g-computation tutorial
+author: ''
+date: '2018-11-16'
+slug: where-have-the-snowdens-gone
+categories: [r]
+tags: [r]
+header:
+  caption: ''
+  image: ''
+---
+
+```{r sim_data}
+library(tidyverse)
+
+simulate_data <- function(n = 300, seed = 285) {
+  set.seed(seed)
+  .data <- data_frame(
+    w1 = rbinom(n, 1, 0.4), # binary confounder, 40% prevalence
+    w2 = rbinom(n, 1, 0.5)  # binary effect modifier, 50% prevalence 
+  )
+  
+  .data %>% 
+    mutate(
+      a = rbinom(n, 1, (0.5 + 0.2 * w1 - 0.3 * w2)),
+      y = rnorm(n, (3 - 0.5 * a + w1 + 0.3 * a * w2), .4)
+    )
+}
+```
+
+```{r traditional}
+library(broom)
+
+clean_table <- function(.mdl) {
+  .mdl %>% 
+    tidy(conf.int = TRUE) %>% 
+    select(term, estimate, conf.high, conf.low) %>%
+    group_by(term) %>% 
+    summarize(
+      estimate = mbmisc::est_ci(estimate, conf.low, conf.high, descriptor = "")
+    )
+}
+
+snowden <- simulate_data()
+
+# model 1
+lm(y ~ a, data = snowden) %>% 
+  clean_table()
+
+# model 2
+lm(y ~ a + w1 + w2, data = snowden) %>% 
+  clean_table()
+
+# model 3
+lm(y ~ a*w2 + w1, data = snowden) %>% 
+  clean_table()
+
+# model 4
+lm(y ~ a + w1 + a:w2, data = snowden) %>% 
+  clean_table()
+
+```
+
+```{r gcomp_msm}
+library(boot)
+
+spread_counterfactuals <- function(.mdl) {
+  y_if_a_is_0 <- predict(.mdl, mutate(.mdl$model, a = 0))
+  y_if_a_is_1 <- predict(.mdl, mutate(.mdl$model, a = 1))
+  bind_rows(
+    data_frame(y = y_if_a_is_0, a = 0),
+    data_frame(y = y_if_a_is_1, a = 1)
+  )
+}
+
+bootstrap_cis <- function(.data, indices, fmla) {
+  lm(fmla, data = .data[indices, ]) %>% 
+  spread_counterfactuals() %>% 
+  lm(y ~ a, data = .) %>% 
+    tidy() %>% 
+    filter(term == "a") %>% 
+    pull(estimate)
+}
+
+compute_g_msm <- function(.data, fmla, reruns = 1e5) {
+  bootstraps <- boot(.data, bootstrap_cis, R = reruns, fmla = fmla)
+  
+  tidy_boot <- tidy(bootstraps, conf.int = TRUE, conf.method = "bca") %>% 
+    mutate(term = "a") %>% 
+    select(term, estimate = statistic, starts_with("conf"))
+  
+  tidy_lm <- lm(fmla, data = .data) %>% 
+    tidy(conf.int = TRUE) %>% 
+    filter(term == "(Intercept)") %>% 
+    select(term, estimate, starts_with("conf"))
+
+  bind_rows(tidy_lm, tidy_boot) %>% 
+    group_by(term) %>% 
+    summarize(
+      estimate = mbmisc::est_ci(estimate, conf.low, conf.high, descriptor = "")
+    )
+}
+
+# model 1
+gmsm_model1 <- compute_g_msm(snowden, y ~ a)
+
+# model 2
+gmsm_model2 <- compute_g_msm(snowden, y ~ a + w1 + w2)
+
+# model 3
+gmsm_model3 <- compute_g_msm(snowden, y ~ a*w2 + w1)
+
+# model 4
+gmsm_model4 <- compute_g_msm(snowden, y ~ a + w1 + a:w2)
+```
+
+```{r gcomputation}
+peek_counterfactuals <- function(.mdl, .data = snowden, ...) {
+  y_if_a_is_0 <- predict(.mdl, mutate(.mdl$model, a = 0), ...)
+  y_if_a_is_1 <- predict(.mdl, mutate(.mdl$model, a = 1), ...)
+  bind_cols(
+    .data,
+    y_if_a_is_0 = y_if_a_is_0,
+    y_if_a_is_1 = y_if_a_is_1
+  )
+}
+
+take_difference <- function(counterfactuals) {
+  counterfactuals %>% 
+    mutate(difference = y_if_a_is_1 - y_if_a_is_0) %>% 
+    summarize(a = mean(difference))
+}
+
+bootstrap_cis_g <- function(.data, indices, fmla) {
+  lm(fmla, data = .data[indices, ]) %>% 
+    peek_counterfactuals() %>% 
+    take_difference() %>% 
+    pull(a)
+}
+
+compute_g <- function(.data, fmla, reruns = 1e5) {
+  bootstraps <- boot(.data, bootstrap_cis_g, R = reruns, fmla = fmla)
+  
+  tidy(bootstraps, conf.int = TRUE, conf.method = "bca") %>% 
+    mutate(term = "a") %>% 
+    select(term, estimate = statistic, starts_with("conf")) %>% 
+    summarize(
+      estimate = mbmisc::est_ci(estimate, conf.low, conf.high, descriptor = "")
+    )
+}
+
+# model 1
+g_model1 <- compute_g(snowden, y ~ a)
+
+# model 2
+g_model2 <- compute_g(snowden, y ~ a + w1 + w2)
+
+# model 3
+g_model3 <- compute_g(snowden, y ~ a*w2 + w1)
+
+# model 4
+g_model4 <- compute_g(snowden, y ~ a + w1 + a:w2)
+```
+
+```{r msm}
+# numerator <- glm(a ~ 1, family = binomial, data = snowden) %>% 
+#   predict(type = "response")
+# denominator <- glm(a ~ w1 + w2, family = binomial, data = snowden)
+
+#sws <- numerator / denominator
+numerator <- glm(a ~ 1, family = binomial, data = snowden)
+denominator <- glm(a ~ w1 + w2, family = binomial, data = snowden)
+
+#sws <- numerator / denominator
+
+numerator <- numerator %>% 
+  augment(type.predict = "response", data = snowden) %>% 
+  mutate(numerator = ifelse(a == 0, 1 - .fitted, .fitted)) %>% 
+  select(numerator = .fitted)
+
+denominator <- denominator %>% 
+  augment(type.predict = "response", data = snowden) %>% 
+  mutate(denominator = ifelse(a == 0, 1 - .fitted, .fitted)) %>% 
+  select(denominator)
+
+bind_cols(snowden, numerator, denominator) %>% 
+  mutate(wts = numerator/mbmisc::sever(denominator)) %>% 
+  glm(y ~ a, data = ., weights = wts) %>% 
+  tidy(conf.int = TRUE)
+
+# denominator %>% 
+#   augment(type.predict = "response", data = snowden) %>% 
+#   mutate(wts = 1 / ifelse(a == 0, 1 - .fitted, .fitted)) %>% 
+#   lm(y ~ a, data = ., weights = mbmisc::sever(wts)) %>% 
+#   tidy(conf.int = TRUE)
+# 
+# lm(y ~ a, data = snowden, weights = sws) %>% 
+#   tidy(conf.int = TRUE)
+
+
+
+
+```
+
+```{r}
+z <- rnorm(10000)
+a_fmla <- exp(2 * z + rnorm(10000)) 
+a_logit <- a_fmla / (1 + a_fmla)
+a <- rbinom(10000, size = 1, prob = a_logit)
+
+y_fmla <- exp(2 * a - 1.4 * z + rnorm(10000)) 
+y_logit <- y_fmla / (1 + y_fmla)
+y <- rbinom(10000, size = 1, prob = y_logit)
+df <- data_frame(y, a, z)
+
+glm(y ~ a + z, data = df, family = binomial()) %>% 
+  peek_counterfactuals(df, type = "response") %>% 
+  summarise(y_if_a_is_1 = mean(y_if_a_is_1), y_if_a_is_0 = mean(y_if_a_is_0)) %>% 
+  mutate(or = (y_if_a_is_1 / (1 - y_if_a_is_1)) / (y_if_a_is_0 / (1 - y_if_a_is_0)))
+
+numerator <- glm(a ~ 1, family = binomial, data = df) %>% 
+  predict(type = "response")
+denominator <- glm(a ~ z, family = binomial, data = df) %>% 
+  predict(type = "response")
+
+
+denominator %>% 
+  augment(type.predict = "response", data = df) %>% 
+  mutate(wts = 1 / ifelse(a == 0, 1 - .fitted, .fitted)) %>% 
+  glm(y ~ a, data = ., weights = mbmisc::sever(wts), family = binomial("log")) %>% 
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+
+
+glm(y ~ a, data = df, weights = mbmisc::sever(sws), family = binomial()) %>% 
+  tidy(conf.int = TRUE, exponentiate = TRUE)
+```
+
+

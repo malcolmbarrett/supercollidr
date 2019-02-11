@@ -42,12 +42,14 @@ compute_density <- ggplot2:::compute_density
 locate_density_labels <- function(.data, x, ...) {
   group_vars <- rlang::enquos(...)
   x <- rlang::enquo(x)
-  .data %>% 
+  .data %>%
     group_by(!!!group_vars) %>%
-    nest() %>% 
-    mutate(data = map(data, ~compute_density(.x[[quo_name(x)]], w = NULL)),
-           data = map(data, ~filter(.x, density == max(density)))) %>% 
-    unnest() %>% 
+    nest() %>%
+    mutate(
+      data = map(data, ~compute_density(.x[[quo_name(x)]], w = NULL)),
+      data = map(data, ~filter(.x, density == max(density)))
+    ) %>%
+    unnest() %>%
     mutate(density = density + .01)
 }
 # 
