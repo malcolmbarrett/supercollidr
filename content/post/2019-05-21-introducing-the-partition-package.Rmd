@@ -1,7 +1,7 @@
 ---
 title: Introducing the partition package
 author: ''
-date: '2019-05-21'
+date: '2019-05-20'
 slug: introducing-the-partition-package
 categories:
   - r
